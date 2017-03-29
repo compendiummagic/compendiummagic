@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
+    'registration',
     'bootstrap3',
     'bootstrap_themes',
     'compendium',
@@ -66,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -73,6 +77,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'compendiummagic.wsgi.application'
 
+AUTHENTICATION_BACKENDS = {
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -107,3 +115,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/compendiummagic/'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_HOST_USER = "postmaster@sandbox717182cbda8f4a4885eca2799c73cda5.mailgun.org"
+EMAIL_HOST_PASSWORD = "cd534cba607361c4bd6a3feeb11f5528"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'magic@compendiummagic.co.uk'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '457098351300227'
+SOCIAL_AUTH_FACEBOOK_SECRET = '465e9e540c4b8c82245efb981da10052'

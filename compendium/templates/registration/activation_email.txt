@@ -1,0 +1,9 @@
+Yo,
+
+You signed up for an account at {{ site.name }}. Click the link below
+
+http://{{ site.domain }}{% url 'registration_activate' activation_key %}
+
+This link is valid for {{ expiration_days }}. It is safe to ignore however.
+
+-Tom xoxoxoxox

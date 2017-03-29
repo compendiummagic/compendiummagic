@@ -7,5 +7,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^compendiummagic/', include('compendium.urls'), name='compendium'),
+    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'', include('social.apps.django_app.urls', namespace='social')),
     url(r'^admin/', include(admin.site.urls)),
 ]
