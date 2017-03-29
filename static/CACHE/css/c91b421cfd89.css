@@ -36,8 +36,8 @@ img.bg {
 }
 
 .maincontent {
-    padding-top: 10vh;
-    padding-bottom:30px;
+    padding-top: 50px;
+    padding-bottom:60px;
     min-height: 100%;
     position: absolute;
     top:0;
@@ -68,12 +68,10 @@ img.bg {
   text-align: center;
   padding-top:20px;
   margin:0;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
 }
 
 .carousel_home {
-    min-height:80vh;
+    min-height:600px;
     min-width:100%;
     margin-left:-20px;
     margin-right:-20px;

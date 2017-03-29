@@ -2,6 +2,8 @@
 
 {% load staticfiles %}
 
+{% load compress %}
+
 {% load bootstrap3 %}
 
 {% load bootstrap_themes %}
@@ -10,7 +12,9 @@
 
 {% block bootstrap3_extra_head %}
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+    {% compress css %}
     <link href="{% static 'base/css/style.css' %}" rel="stylesheet" type="text/css">
+    {% endcompress %}
 {% endblock %}
 
 {% block bootstrap3_title %}
@@ -139,8 +143,8 @@
 
 <!--###################################################footer############################################# -->
 
-    <div class="navbar navbar-default navbar-fixed-bottom footer">
-        <div class="col-md-12">
+    <div class="navbar navbar-default footer">
+        <div class="container">
             <p>2017 Compendium Magic</p>
         </div>
     </div>

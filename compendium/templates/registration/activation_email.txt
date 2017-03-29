@@ -1,9 +1,13 @@
-Yo,
+Welcome,
 
-You signed up for an account at {{ site.name }}. Click the link below
+You signed up for an account at {{ site.name }}. Click the link below to activate your account
 
 http://{{ site.domain }}{% url 'registration_activate' activation_key %}
 
 This link is valid for {{ expiration_days }}. It is safe to ignore however.
 
--Tom xoxoxoxox
+An activated account will allow you to hire entertainers, purchase items from the shop and leave us valuable reviews!
+
+Much Love
+
+The Compendium Magic Team

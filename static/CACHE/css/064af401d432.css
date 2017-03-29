@@ -36,8 +36,7 @@ img.bg {
 }
 
 .maincontent {
-    padding-top: 10vh;
-    padding-bottom:30px;
+    margin-top:50px;
     min-height: 100%;
     position: absolute;
     top:0;
