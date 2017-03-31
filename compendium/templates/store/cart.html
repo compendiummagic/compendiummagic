@@ -11,7 +11,7 @@
             <div class="cart_listing">
                 <span class="title">{{ item.item.title }}</span> by {{ item.item.author }}
             </div>
-            <div class="cart_price">
+            <div class="cart_price pull-right">
                 <span class="cart_quantity">{{ item.quantity }} x £<span class="cart_value">{{ item.item.price }}</span></span>
                 Quantity: <a href="{% url 'add_to_cart' item.item.id 1 %}">[+]</a> / <a href="{% url 'remove_from_cart' item.item.id 1 %}">[-]</a>
             </div>
@@ -22,7 +22,7 @@
             <div class="cart_listing">
                 <span class="title">{{ item.item.title }}</span> by {{ item.item.designer }}
             </div>
-            <div class="cart_price">
+            <div class="cart_price pull-right">
                 <span class="cart_quantity">{{ item.quantity }} x £<span class="cart_value">{{ item.item.price }}</span></span>
                 Quantity: <a href="{% url 'add_to_cart' item.item.id 2 %}">[+]</a> / <a href="{% url 'remove_from_cart' item.item.id 2 %}">[-]</a>
             </div>
@@ -33,7 +33,7 @@
             <div class="cart_listing">
                 <span class="title">{{ item.item.title }}</span> by {{ item.item.designer }}
             </div>
-            <div class="cart_price">
+            <div class="cart_price pull-right">
                 <span class="cart_quantity">{{ item.quantity }} x £<span class="cart_value">{{ item.item.price }}</span></span>
                 Quantity: <a href="{% url 'add_to_cart' item.item.id 3 %}">[+]</a> / <a href="{% url 'remove_from_cart' item.item.id 3 %}">[-]</a>
             </div>
