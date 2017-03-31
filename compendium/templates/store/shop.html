@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="col-md-8 col-md-offset-2 col-sm-12 maincontent" style="border:1px dashed black">
+<div class="col-md-8 col-md-offset-2 col-sm-12 maincontent" style="border-left:1px dashed black;border-right:1px dashed black;">
     {% block shop_header %}
     <div class="shop_header navbar navbar-default"><h3>Welcome to our Shop!</h3></div>
     {% endblock %}
@@ -31,13 +31,14 @@
         </div>
         {% endblock %}
         {% block content %}
-        <div class="shop_content col-md-9 col-sm-8 col-xs-6 col-md-offset-3 clo-sm-offset-4 col-xs-offset-6">
+        <div class="shop_content container-fluid col-md-9 col-sm-8 col-xs-6 col-md-offset-3 clo-sm-offset-4 col-xs-offset-6">
         {% for book in books %}
             <div class="shop_book_display">
                 <a href="{% url 'book_details' book.id %}">
                     <img src="{{ MEDIA_URL }}{{ book.cover_image }}">
                     <span class="shop_book_title">{{ book.title }}</span>
                     <span class="shop_book_author">{{ book.author }}</span>
+                    <span class="shop_book_author">£{{ book.price }}</span>
                 </a>
                 {% if request.user.is_authenticated %}
                 <span class="shop_add_to_cart">
@@ -53,6 +54,7 @@
                     <span class="shop_book_title">{{ misc.title }}</span>
                     <span class="shop_book_author">{{ misc.type }}</span>
                     <span class="shop_book_author">{{ misc.designer }}</span>
+                    <span class="shop_book_author">£{{ misc.price }}</span>
                 </a>
                 {% if request.user.is_authenticated %}
                 <span class="shop_add_to_cart">
@@ -68,6 +70,7 @@
                     <span class="shop_book_title">{{ cloth.title }}</span>
                     <span class="shop_book_author">{{ cloth.type }}</span>
                     <span class="shop_book_author">{{ cloth.designer }}</span>
+                    <span class="shop_book_author">£{{ cloth.price }}</span>
                 </a>
                 {% if request.user.is_authenticated %}
                 <span class="shop_add_to_cart">
