@@ -6,6 +6,11 @@ body {
     min-height:100%;
 }
 
+.wrapper {
+	min-height:100%;
+	position:relative;
+}
+
 .container-fluid {
     z-index: 1;
     min-height:100%;
@@ -60,14 +65,14 @@ img.bg {
 }
 
 .footer {
-  position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 60px;
   text-align: center;
   padding-top:20px;
   margin:0;
+  position: fixed;
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
@@ -118,6 +123,7 @@ img.bg {
 
 .shop_content{
     position: relative;
+    padding-bottom: 60px;
 }
 
 .shop_book_display {
@@ -173,4 +179,47 @@ img.bg {
     font-size: 20px;
     display: block;
     font-weight: bold;
+}
+
+
+/* cart styles */
+.cart_container{
+    min-height:75vh;
+    max-width:758px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-bottom: 60px;
+}
+.cart_item {
+    width:100%;
+    margin-top:20px;
+    display:block;
+    border-bottom: 1px solid black;
+    padding-bottom:20px;
+}
+.cart_listing {
+    display:inline-block;
+    font-weight:bold;
+}
+.cart_listing .title {
+    display:block;
+    font-weight: bold;
+}
+.cart_price{
+    display:inline-block;
+    text-align:right;
+    width:49%;
+    vertical-align: top;
+    padding-right:0;
+    margin-right:0;
+}
+.cart_value {
+    font-weight:bold;
+}
+.cart_quantity {
+    display:block;
+}
+.cart_total {
+    text-align:right;
+    margin-top: 20px;
 }

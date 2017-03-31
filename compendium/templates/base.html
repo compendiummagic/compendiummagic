@@ -24,8 +24,8 @@
 {% endblock %}
 
 {% block bootstrap3_content %}
+<div class="wrapper">
 <!--###################################################navbar############################################# -->
-
     <nav class = "navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -62,7 +62,7 @@
                     <li><a href="#">Tricks</a></li>
                     {% endif %}
                     {% if request.user.is_authenticated %}
-                    <li><a href="#"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+                    <li><a href="{% url 'cart' %}"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
                     {% endif %}
                 </ul>
                 <div class="navbar-form pull-right">
@@ -145,13 +145,15 @@
 
 <!--###################################################footer############################################# -->
 
-    <div class="navbar navbar-default footer">
+    <nav class="navbar navbar-default footer">
         <div class="container">
             <p>2017 Compendium Magic</p>
         </div>
-    </div>
+    </nav>
 
 <!--###################################################footerend############################################# -->
+
+</div>
 
 {% endblock %}
 

@@ -64,6 +64,7 @@ class ReviewBook(models.Model):
     publish_date = models.DateField(default=timezone.now)
     text = models.TextField()
 
+
 class ReviewMisc(models.Model):
     misc = models.ForeignKey(Misc)
     user = models.ForeignKey(User)
@@ -75,3 +76,111 @@ class ReviewApparel(models.Model):
     user = models.ForeignKey(User)
     publish_date = models.DateField(default=timezone.now)
     text = models.TextField()
+
+class Cart(models.Model):
+    user = models.ForeignKey(User)
+    active = models.BooleanField(default=True)
+    order_date = models.DateField(null=True)
+    payment_type = models.CharField(max_length=100, null=True)
+    payment_id = models.CharField(max_length=100, null=True)
+
+    def add_to_cart(self, item_id, item_classifier):
+        if item_classifier == 1:
+            item = Book.objects.get(pk=item_id)
+            try:
+                preexisting_order = BookOrder.objects.get(item=item, cart=self)
+                preexisting_order.quantity += 1
+                preexisting_order.save()
+
+            except BookOrder.DoesNotExist:
+                new_order = BookOrder.objects.create(
+                    item=item,
+                    cart=self,
+                    quantity=1
+                )
+                new_order.save()
+
+        elif item_classifier == 2:
+            item = Misc.objects.get(pk=item_id)
+            try:
+                preexisting_order = MiscOrder.objects.get(item=item, cart=self)
+                preexisting_order.quantity += 1
+                preexisting_order.save()
+
+            except MiscOrder.DoesNotExist:
+                new_order = MiscOrder.objects.create(
+                    item=item,
+                    cart=self,
+                    quantity=1
+                )
+                new_order.save()
+
+        elif item_classifier == 3:
+            item = Apparel.objects.get(pk=item_id)
+            try:
+                preexisting_order = ApparelOrder.objects.get(item=item, cart=self)
+                preexisting_order.quantity += 1
+                preexisting_order.save()
+
+            except ApparelOrder.DoesNotExist:
+                new_order = ApparelOrder.objects.create(
+                    item=item,
+                    cart=self,
+                    quantity=1
+                )
+                new_order.save()
+
+    def remove_from_cart(self, item_id, item_classifier):
+        if item_classifier == 1:
+            item = Book.objects.get(pk=item_id)
+            try:
+                preexisting_order = BookOrder.objects.get(item=item, cart=self)
+                if preexisting_order.quantity > 1:
+                    preexisting_order.quantity -= 1
+                    preexisting_order.save()
+                else:
+                    preexisting_order.delete()
+            except BookOrder.DoesNotExist:
+                pass
+
+        elif item_classifier == 2:
+            item = Misc.objects.get(pk=item_id)
+            try:
+                preexisting_order = MiscOrder.objects.get(item=item, cart=self)
+                if preexisting_order.quantity > 1:
+                    preexisting_order.quantity -= 1
+                    preexisting_order.save()
+                else:
+                    preexisting_order.delete()
+            except MiscOrder.DoesNotExist:
+                pass
+
+        elif item_classifier == 3:
+            item = Apparel.objects.get(pk=item_id)
+            try:
+                preexisting_order = ApparelOrder.objects.get(item=item, cart=self)
+                if preexisting_order.quantity > 1:
+                    preexisting_order.quantity -= 1
+                    preexisting_order.save()
+                else:
+                    preexisting_order.delete()
+            except ApparelOrder.DoesNotExist:
+                pass
+
+
+class BookOrder(models.Model):
+    item = models.ForeignKey(Book)
+    cart = models.ForeignKey(Cart)
+    quantity = models.IntegerField()
+
+
+class MiscOrder(models.Model):
+    item = models.ForeignKey(Misc)
+    cart = models.ForeignKey(Cart)
+    quantity = models.IntegerField()
+
+
+class ApparelOrder(models.Model):
+    item = models.ForeignKey(Apparel)
+    cart = models.ForeignKey(Cart)
+    quantity = models.IntegerField()

@@ -41,7 +41,7 @@
                 </a>
                 {% if request.user.is_authenticated %}
                 <span class="shop_add_to_cart">
-                    <a href="#">[Add To Cart]</a>
+                    <a href="{% url 'add_to_cart' book.id 1%}">[Add To Cart]</a>
                 </span>
                 {% endif %}
             </div>
@@ -56,7 +56,7 @@
                 </a>
                 {% if request.user.is_authenticated %}
                 <span class="shop_add_to_cart">
-                    <a href="#">[Add To Cart]</a>
+                    <a href="{% url 'add_to_cart' misc.id 2 %}">[Add To Cart]</a>
                 </span>
                 {% endif %}
             </div>
@@ -71,7 +71,7 @@
                 </a>
                 {% if request.user.is_authenticated %}
                 <span class="shop_add_to_cart">
-                    <a href="#">[Add To Cart]</a>
+                    <a href="{% url 'add_to_cart' cloth.id 3 %}">[Add To Cart]</a>
                 </span>
                 {% endif %}
             </div>
