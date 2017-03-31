@@ -1,0 +1,45 @@
+{% extends 'store/shop.html' %}
+
+{% load staticfiles %}
+
+{% block shop_header %}
+{% endblock %}
+
+{% block content %}
+
+<div class="col-md-9 col-sm-8 col-xs-6 col-md-offset-3 clo-sm-offset-4 col-xs-offset-6 shop_content">
+    <div class="detail_book_display">
+        <img class="detail_book_img" src="{{ MEDIA_URL }}{{ cloth.cover_image }}">
+        <span class="detail_book_title">{{ cloth.title }}</span>
+        <span class="detail_book_author">{{ cloth.type }}</span>
+        <span class="detail_book_author">{{ cloth.designer }}</span>
+        <div class="detail_book_description">{{ cloth.description }}</div>
+        <div class="detail_book_reviews_title">Reviews {% if reviews %}({{ reviews.count }}){% endif %}</div>
+        <div class="detail_book_reviews">
+            <div class = "col-md-6 col-md-offset-3" style="margin-left:auto, margin-right:auto">
+                {% if form %}
+                <h4> Have you used this item?</h4>
+                <form class="form-inline" action="{% url 'apparel_details' cloth.pk %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Submit">
+                </form>
+                {% endif %}
+                {% for review in reviews %}
+                <div>
+                    {{ review.text }}
+                </div>
+                <div style="font-weight:bold">
+                    -{{ review.user.username }} on {{ review.publish_date }}
+                </div>
+                {% empty %}
+                <div style="margin-top:20px">
+                    There are no reviews for this item yet!
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

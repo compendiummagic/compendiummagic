@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Store - Compendium Magic
+{% endblock %}
+
+{% block body %}
+<div class="col-md-8 col-md-offset-2 col-sm-12 maincontent" style="border:1px dashed black">
+    {% block shop_header %}
+    <div class="shop_header navbar navbar-default"><h3>Welcome to our Shop!</h3></div>
+    {% endblock %}
+        <div class="row">
+        {% block sidebar %}
+        <div class="shop_sidenav navbar navbar-default col-md-3 col-sm-4 col-xs-6">
+            <form class="navbar-form navbar-left">
+                <h4>Search by Category</h4>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <span class="input-group-btn">
+                      <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                  </span>
+                  </div>
+            </form>
+            <ul>
+                <li><a href="{% url 'shop' 0 %}">All</a></li>
+                <li><a href="{% url 'shop' 1 %}">Books</a></li>
+                <li><a href="{% url 'shop' 3 %}">Apparel</a></li>
+                <li><a href="{% url 'shop' 2 %}">Miscellaneous</a></li>
+            </ul>
+        </div>
+        {% endblock %}
+        {% block content %}
+        <div class="shop_content col-md-9 col-sm-8 col-xs-6 col-md-offset-3 clo-sm-offset-4 col-xs-offset-6">
+        {% for book in books %}
+            <div class="shop_book_display">
+                <a href="{% url 'book_details' book.id %}">
+                    <img src="{{ MEDIA_URL }}{{ book.cover_image }}">
+                    <span class="shop_book_title">{{ book.title }}</span>
+                    <span class="shop_book_author">{{ book.author }}</span>
+                </a>
+                {% if request.user.is_authenticated %}
+                <span class="shop_add_to_cart">
+                    <a href="#">[Add To Cart]</a>
+                </span>
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% for misc in miscs %}
+            <div class="shop_book_display">
+                <a href="{% url 'misc_details' misc.id %}">
+                    <img src="{{ MEDIA_URL }}{{ misc.cover_image }}">
+                    <span class="shop_book_title">{{ misc.title }}</span>
+                    <span class="shop_book_author">{{ misc.type }}</span>
+                    <span class="shop_book_author">{{ misc.designer }}</span>
+                </a>
+                {% if request.user.is_authenticated %}
+                <span class="shop_add_to_cart">
+                    <a href="#">[Add To Cart]</a>
+                </span>
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% for cloth in clothes %}
+            <div class="shop_book_display">
+                <a href="{% url 'apparel_details' cloth.id %}">
+                    <img src="{{ MEDIA_URL }}{{ cloth.cover_image }}">
+                    <span class="shop_book_title">{{ cloth.title }}</span>
+                    <span class="shop_book_author">{{ cloth.type }}</span>
+                    <span class="shop_book_author">{{ cloth.designer }}</span>
+                </a>
+                {% if request.user.is_authenticated %}
+                <span class="shop_add_to_cart">
+                    <a href="#">[Add To Cart]</a>
+                </span>
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% endblock %}
+        </div>
+        </div>
+    </div>
+{% endblock %}

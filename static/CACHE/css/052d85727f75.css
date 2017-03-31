@@ -42,9 +42,9 @@ img.bg {
     position: absolute;
     top:0;
     background-color:#fff;
-    /*opacity: 0.9;
-    filter: alpha(opacity=90);
-    border: 1px dashed black*/
+    "opacity: 0.9;
+    "filter: alpha(opacity=90);
+    border: 1px dashed black
 }
 
 .text_image_holder{
@@ -83,42 +83,7 @@ img.bg {
     margin:auto;
 }
 
-/* shop styles */
-
-.shop_header {
-    text-align: center;
-    margin: 10px;
-    margin-left:-20px;
-    margin-right:-20px;
-    padding:10px;
-    z-index:2;
-}
-
-.shop_sidenav {
-    margin-left: -5px;
-    min-height: 69%;
-    max-width: 250px;
-    position: fixed;
-}
-
-.shop_sidenav ul{
-    text-decoration:bold;
-}
-
-.shop_sidenav ul li{
-    list-style-type: none;
-    padding:10px;
-    margin-left: -20px;
-    border-bottom: 1px solid grey;
-}
-
-.shop_sidenav ul .active{
-    font-weight: bold;
-}
-
-.shop_content{
-    position: relative;
-}
+/* storefront styles */
 
 .shop_book_display {
     width:200px;
@@ -165,12 +130,4 @@ img.bg {
     width:80%;
     margin-left: auto;
     margin-right: auto;
-}
-
-.detail_book_reviews_title {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    display: block;
-    font-weight: bold;
 }

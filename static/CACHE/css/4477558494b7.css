@@ -96,7 +96,7 @@ img.bg {
 
 .shop_sidenav {
     margin-left: -5px;
-    min-height: 69%;
+    max-height: 60%;
     max-width: 250px;
     position: fixed;
 }
@@ -165,12 +165,4 @@ img.bg {
     width:80%;
     margin-left: auto;
     margin-right: auto;
-}
-
-.detail_book_reviews_title {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    display: block;
-    font-weight: bold;
 }

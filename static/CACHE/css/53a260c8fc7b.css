@@ -96,8 +96,7 @@ img.bg {
 
 .shop_sidenav {
     margin-left: -5px;
-    min-height: 69%;
-    max-width: 250px;
+    min-height: 100%;
     position: fixed;
 }
 
@@ -112,18 +111,11 @@ img.bg {
     border-bottom: 1px solid grey;
 }
 
-.shop_sidenav ul .active{
-    font-weight: bold;
-}
-
-.shop_content{
-    position: relative;
-}
-
 .shop_book_display {
     width:200px;
     display: inline-block;
     text-align:center;
+    position: fixed;
 }
 
 .shop_book_title {
@@ -165,12 +157,4 @@ img.bg {
     width:80%;
     margin-left: auto;
     margin-right: auto;
-}
-
-.detail_book_reviews_title {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    display: block;
-    font-weight: bold;
 }

@@ -88,36 +88,9 @@ img.bg {
 .shop_header {
     text-align: center;
     margin: 10px;
-    margin-left:-20px;
-    margin-right:-20px;
     padding:10px;
-    z-index:2;
-}
-
-.shop_sidenav {
-    margin-left: -5px;
-    min-height: 69%;
-    max-width: 250px;
-    position: fixed;
-}
-
-.shop_sidenav ul{
-    text-decoration:bold;
-}
-
-.shop_sidenav ul li{
-    list-style-type: none;
-    padding:10px;
-    margin-left: -20px;
-    border-bottom: 1px solid grey;
-}
-
-.shop_sidenav ul .active{
-    font-weight: bold;
-}
-
-.shop_content{
-    position: relative;
+    padding-left: -20px;
+    padding-right:-20px;
 }
 
 .shop_book_display {
@@ -165,12 +138,4 @@ img.bg {
     width:80%;
     margin-left: auto;
     margin-right: auto;
-}
-
-.detail_book_reviews_title {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    display: block;
-    font-weight: bold;
 }

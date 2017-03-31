@@ -38,7 +38,6 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'index' %}">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hire Us<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -52,7 +51,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Merchandise</a></li>
+                            <li><a href="{% url 'shop' 0 %}">Merchandise</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Tricks</a></li>
                         </ul>
@@ -61,6 +60,9 @@
                     <li><a href="#">Contact Us</a></li>
                     {% if request.user.is_superuser %}
                     <li><a href="#">Tricks</a></li>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                    <li><a href="#"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
                     {% endif %}
                 </ul>
                 <div class="navbar-form pull-right">
@@ -102,19 +104,19 @@
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                          <img src="{% static 'base/img/background.png' %}">
+                          <img src="{% static 'base/img/background2.png' %}">
                           <div class="carousel-caption">
                               <h3>Welcome to Compendium Magic!</h3>
                           </div>
                         </div>
                         <div class="item">
-                          <img src="{% static 'base/img/background2.png' %}">
+                          <img src="{% static 'base/img/background3.png' %}">
                           <div class="carousel-caption">
                               <h3>Hire us today for all your magical entertainment needs</h3>
                           </div>
                         </div>
                         <div class="item">
-                          <img src="{% static 'base/img/background3.png' %}">
+                          <img src="{% static 'base/img/background4.png' %}">
                           <div class="carousel-caption">
                               <h3>Or visit our store and browse our merchandise and tricks</h3>
                           </div>
