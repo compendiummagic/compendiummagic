@@ -1,0 +1,51 @@
+{% extends 'store/tricks_shop.html' %}
+
+{% load staticfiles %}
+{% load embed_video_tags %}
+
+{% block shop_header %}
+{% endblock %}
+
+{% block content %}
+
+<div class="col-md-12 col-sm-12 col-xs-12 shop_content">
+    <div class="detail_book_display">
+        <div class="video_detail">
+        {% video trick.video as my_video %}
+          {% video my_video "small" %}
+        {% endvideo %}
+        </div>
+        <span class="detail_book_title">{{ trick.title }}</span>
+        <span class="detail_book_author">{{ trick.type }}</span>
+        <span class="detail_book_author">{{ trick.designer }}</span>
+        <div class="detail_book_description">{{ trick.description }}</div>
+        <div class="detail_book_reviews_title">Reviews {% if reviews %}({{ reviews.count }}){% endif %}</div>
+        <div class="detail_book_reviews">
+            <div class = "col-md-6 col-md-offset-3" style="margin-left:auto, margin-right:auto">
+                {% if form %}
+                <h4> Have you used this trick?</h4>
+                <form class="form-inline" action="{% url 'trick_details' trick.pk %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Submit">
+                </form>
+                <br>
+                {% endif %}
+                {% for review in reviews %}
+                <div>
+                    {{ review.text }}
+                </div>
+                <div style="font-weight:bold">
+                    -{{ review.user.username }} on {{ review.publish_date }}
+                </div>
+                {% empty %}
+                <div style="margin-top:20px">
+                    There are no reviews for this item yet!
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

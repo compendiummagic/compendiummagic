@@ -40,11 +40,9 @@
                     <span class="shop_book_author">{{ book.author }}</span>
                     <span class="shop_book_author">£{{ book.price }}</span>
                 </a>
-                {% if request.user.is_authenticated %}
                 <span class="shop_add_to_cart">
-                    <a href="{% url 'add_to_cart' book.id 1%}">[Add To Cart]</a>
+                    <a {% if request.user.is_authenticated %} href="{% url 'add_to_cart' book.id 1%}"{% else %}href="{% url 'registration_register' %}"{% endif %}>[Add To Cart]</a>
                 </span>
-                {% endif %}
             </div>
         {% endfor %}
         {% for misc in miscs %}
@@ -56,11 +54,9 @@
                     <span class="shop_book_author">{{ misc.designer }}</span>
                     <span class="shop_book_author">£{{ misc.price }}</span>
                 </a>
-                {% if request.user.is_authenticated %}
                 <span class="shop_add_to_cart">
-                    <a href="{% url 'add_to_cart' misc.id 2 %}">[Add To Cart]</a>
+                    <a {% if request.user.is_authenticated %} href="{% url 'add_to_cart' misc.id 2 %}"{% else %}href="{% url 'registration_register' %}"{% endif %}>[Add To Cart]</a>
                 </span>
-                {% endif %}
             </div>
         {% endfor %}
         {% for cloth in clothes %}
@@ -72,11 +68,9 @@
                     <span class="shop_book_author">{{ cloth.designer }}</span>
                     <span class="shop_book_author">£{{ cloth.price }}</span>
                 </a>
-                {% if request.user.is_authenticated %}
                 <span class="shop_add_to_cart">
-                    <a href="{% url 'add_to_cart' cloth.id 3 %}">[Add To Cart]</a>
+                    <a {% if request.user.is_authenticated %}href="{% url 'add_to_cart' cloth.id 3 %}"{% else %}href="{% url 'registration_register' %}"{% endif %}>[Add To Cart]</a>
                 </span>
-                {% endif %}
             </div>
         {% endfor %}
         {% endblock %}

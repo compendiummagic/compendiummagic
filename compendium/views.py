@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Book, Misc, Apparel, ReviewBook, ReviewApparel, ReviewMisc, Cart, BookOrder, MiscOrder, ApparelOrder
+from .models import Trick, ReviewTrick, TrickOrder
 from .forms import ReviewForm
 
 # Create your views here.
@@ -32,6 +33,19 @@ def shop(request, identifier):
         'clothes': clothes,
     }
     return render(request, "store/shop.html", context)
+
+def trick_shop(request, sort_identifier):
+    tricks = Trick.objects.order_by('publish_date')
+    difficulty = []
+    i = 0
+    for trick in tricks:
+        difficulty.append(str(trick.difficulty))
+        i += 1
+    context = {
+        'tricks': tricks,
+        'difficulty': difficulty,
+    }
+    return render(request, "store/tricks_shop.html", context)
 
 def book_details(request, book_id):
     book = get_object_or_404(Book, id=book_id)
@@ -106,6 +120,30 @@ def apparel_details(request, apparel_id):
 
     return render(request, 'store/apparel_detail.html', context)
 
+def trick_details(request, trick_id):
+    trick = get_object_or_404(Trick, id=trick_id)
+    context = {
+        'trick': trick,
+    }
+    if request.user.is_authenticated():
+        if request.method == "POST":
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                new_review = ReviewTrick.objects.create(
+                    user=request.user,
+                    trick=context['trick'],
+                    text=form.cleaned_data.get('text'),
+                )
+                new_review.save()
+
+        else:
+            if ReviewTrick.objects.filter(user=request.user, trick=context['trick']).count() == 0:
+                form = ReviewForm()
+                context['form'] = form
+    context['reviews'] = trick.reviewtrick_set.all()
+
+    return render(request, 'store/trick_detail.html', context)
+
 
 
 def add_to_cart(request, item_id, item_classifier):
@@ -118,6 +156,8 @@ def add_to_cart(request, item_id, item_classifier):
                 item = Misc.objects.get(pk=item_id)
             elif item_classifier == 3:
                 item = Apparel.objects.get(pk=item_id)
+            elif item_classifier == 4:
+                item = Trick.objects.get(pk=item_id)
         except ObjectDoesNotExist:
             pass
         else:
@@ -144,6 +184,8 @@ def remove_from_cart(request, item_id, item_classifier):
                 item = Misc.objects.get(pk=item_id)
             elif item_classifier == 3:
                 item = Apparel.objects.get(pk=item_id)
+            elif item_classifier == 4:
+                item = Trick.objects.get(pk=item_id)
         except ObjectDoesNotExist:
             pass
         else:
@@ -160,6 +202,7 @@ def cart(request):
         book_orders = BookOrder.objects.filter(cart=cart)
         misc_orders = MiscOrder.objects.filter(cart=cart)
         apparel_orders = ApparelOrder.objects.filter(cart=cart)
+        trick_orders = TrickOrder.objects.filter(cart=cart)
         total = 0
         count = 0
         for order in book_orders:
@@ -171,11 +214,15 @@ def cart(request):
         for order in apparel_orders:
             total += (order.item.price * order.quantity)
             count += order.quantity
+        for order in trick_orders:
+            total += (order.item.price * order.quantity)
+            count += order.quantity
 
         context = {
             'book_cart': book_orders,
             'misc_cart': misc_orders,
             'apparel_cart': apparel_orders,
+            'trick_cart': trick_orders,
             'total': total,
             'count': count,
         }

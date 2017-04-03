@@ -124,7 +124,7 @@ img.bg {
 .shop_content{
     position: relative;
     padding-bottom: 60px;
-    min-height:70vh;
+    min-height:75vh;
 }
 
 .shop_book_display {
@@ -182,10 +182,6 @@ img.bg {
     font-weight: bold;
 }
 
-
-.video_detail {
-    max-width: 100%;
-}
 
 /* cart styles */
 .cart_container{

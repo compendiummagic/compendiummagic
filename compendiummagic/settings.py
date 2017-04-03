@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'registration',
     'compressor',
+    'embed_video',
     'bootstrap3',
     'bootstrap_themes',
     'compendium',
@@ -71,7 +72,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
-                'django.template.context_processors.media'
+                'django.template.context_processors.media',
+                'django.core.context_processors.request',
             ],
         },
     },

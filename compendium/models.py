@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from embed_video.fields import EmbedVideoField
 
 # Create your models here.
 
@@ -10,6 +11,9 @@ def misc_cover_upload_path(instance, filename):
     return '/'.join(['misc', str(instance.id), filename])
 def apparel_cover_upload_path(instance, filename):
     return '/'.join(['apparel', str(instance.id), filename])
+def trick_cover_upload_path(instance, filename):
+    return '/'.join(['trick', str(instance.id), filename])
+
 
 class ApparelType(models.Model):
     type = models.CharField(max_length=200)
@@ -27,6 +31,17 @@ class MiscType(models.Model):
     def __unicode__(self):
         return "%s" % (self.type)
 
+class TrickType(models.Model):
+    type = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return "%s" % (self.type)
+
+class Difficulty(models.Model):
+    rating = models.TextField(max_length=200)
+
+    def __unicode__(self):
+        return "%s" % (self.rating)
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
@@ -58,6 +73,19 @@ class Apparel(models.Model):
     quantity = models.IntegerField(default = 0)
     cover_image = models.ImageField(upload_to=apparel_cover_upload_path, default='apparel/image_not_available.jpg')
 
+class Trick(models.Model):
+    title = models.CharField(max_length=200)
+    designer = models.CharField(max_length=200)
+    type = models.ForeignKey(TrickType)
+    difficulty = models.ForeignKey(Difficulty)
+    video = EmbedVideoField()
+    description = models.TextField()
+    publish_date = models.DateField(default=timezone.now)
+    price = models.DecimalField(default=0.0, decimal_places=2, max_digits=8)
+    quantity = models.IntegerField(default = 0)
+    cover_image = models.ImageField(upload_to=trick_cover_upload_path, default='trick/image_not_available.jpg')
+
+
 class ReviewBook(models.Model):
     book = models.ForeignKey(Book)
     user = models.ForeignKey(User)
@@ -73,6 +101,12 @@ class ReviewMisc(models.Model):
 
 class ReviewApparel(models.Model):
     apparel = models.ForeignKey(Apparel)
+    user = models.ForeignKey(User)
+    publish_date = models.DateField(default=timezone.now)
+    text = models.TextField()
+
+class ReviewTrick(models.Model):
+    trick = models.ForeignKey(Trick)
     user = models.ForeignKey(User)
     publish_date = models.DateField(default=timezone.now)
     text = models.TextField()
@@ -130,6 +164,21 @@ class Cart(models.Model):
                 )
                 new_order.save()
 
+        elif item_classifier == 4:
+            item = Trick.objects.get(pk=item_id)
+            try:
+                preexisting_order = TrickOrder.objects.get(item=item, cart=self)
+                preexisting_order.quantity += 1
+                preexisting_order.save()
+
+            except TrickOrder.DoesNotExist:
+                new_order = TrickOrder.objects.create(
+                    item=item,
+                    cart=self,
+                    quantity=1
+                )
+                new_order.save()
+
     def remove_from_cart(self, item_id, item_classifier):
         if item_classifier == 1:
             item = Book.objects.get(pk=item_id)
@@ -167,6 +216,18 @@ class Cart(models.Model):
             except ApparelOrder.DoesNotExist:
                 pass
 
+        elif item_classifier == 4:
+            item = Trick.objects.get(pk=item_id)
+            try:
+                preexisting_order = TrickOrder.objects.get(item=item, cart=self)
+                if preexisting_order.quantity > 1:
+                    preexisting_order.quantity -= 1
+                    preexisting_order.save()
+                else:
+                    preexisting_order.delete()
+            except TrickOrder.DoesNotExist:
+                pass
+
 
 class BookOrder(models.Model):
     item = models.ForeignKey(Book)
@@ -182,5 +243,10 @@ class MiscOrder(models.Model):
 
 class ApparelOrder(models.Model):
     item = models.ForeignKey(Apparel)
+    cart = models.ForeignKey(Cart)
+    quantity = models.IntegerField()
+
+class TrickOrder(models.Model):
+    item = models.ForeignKey(Trick)
     cart = models.ForeignKey(Cart)
     quantity = models.IntegerField()
