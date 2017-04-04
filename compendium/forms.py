@@ -1,16 +1,26 @@
 from django import forms
 
+DATE_INPUT_FORMATS = (
+    '%d.%m.%Y', '%d.%m.%Y', '%d.%m.%y',  # '25.10.2006', '25.10.2006', '25.10.06'
+    '%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y',  # '25-10-2006', '25/10/2006', '25/10/06'
+    '%d %b %Y',  # '25 Oct 2006',
+    '%d %B %Y',  # '25 October 2006',
+    '%d %b',
+    '%d %B',
+)
+
+CHOICES = [
+    ("1-5", "1-5"), ("5-10", "5-10"), ("10-20", "10-20"), ("20-50", "20-50"), ("50-100", "50-100"), ("100+", "100+"),
+]
+
+
 class ReviewForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea, label='')
 
 class ContactForm(forms.Form):
 
-    CHOICES = [
-        (1, "1-5"), (2, "5-10"), (3, "10-20"), (4, "20-50"), (5, "50-100"), (6, "100+"),
-    ]
-
     phone = forms.CharField(max_length=50, label='Mobile Number')
-    date = forms.DateField(label='Event Date')
+    date = forms.DateField(label='Event Date', input_formats=DATE_INPUT_FORMATS)
     time = forms.TimeField(label='Event Time')
     venue = forms.CharField(max_length=200, label='Event Venue')
     guests = forms.ChoiceField(choices=CHOICES, label='Number of Guests')
