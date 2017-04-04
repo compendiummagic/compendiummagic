@@ -23,10 +23,10 @@
                   </div>
             </form>
             <ul>
-                <li><a href="{% url 'shop' 0 %}">All</a></li>
-                <li><a href="{% url 'shop' 1 %}">Books</a></li>
-                <li><a href="{% url 'shop' 3 %}">Apparel</a></li>
-                <li><a href="{% url 'shop' 2 %}">Miscellaneous</a></li>
+                <li><a href="{% url 'shop' 0 %}" {% if identifier == 0 %}style="font-weight:bold"{% endif %}>All</a></li>
+                <li><a href="{% url 'shop' 1 %}" {% if identifier == 1 %}style="font-weight:bold"{% endif %}>Books</a></li>
+                <li><a href="{% url 'shop' 3 %}" {% if identifier == 3 %}style="font-weight:bold"{% endif %}>Apparel</a></li>
+                <li><a href="{% url 'shop' 2 %}" {% if identifier == 2 %}style="font-weight:bold"{% endif %}>Miscellaneous</a></li>
             </ul>
         </div>
         {% endblock %}

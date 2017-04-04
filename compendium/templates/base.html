@@ -41,11 +41,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hire Us<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Stage</a></li>
-                            <li><a href="#">Restaurant</a></li>
-                            <li><a href="#">Close Up</a></li>
+                            <li><a href="{% url 'hire_us' 0 %}">Stage</a></li>
+                            <li><a href="{% url 'hire_us' 1 %}">Restaurant</a></li>
+                            <li><a href="{% url 'hire_us' 2 %}">Close Up</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Prices</a></li>
+                            <li><a href="{% url 'reviews' 1 %}">Reviews</a></li>
+                            <li><a href="{% url 'hire_us' 3 %}">Prices</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -56,7 +57,6 @@
                             <li><a href="{% url 'trick_shop' 0 %}">Tricks</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Reviews</a></li>
                     <li><a href="#">Contact Us</a></li>
                     {% if request.user.is_superuser %}
                     <li><a href="#">Tricks</a></li>
@@ -87,7 +87,6 @@
 <!--###################################################maincontent############################################# -->
 
     <div class="container-fluid">
-        <img src="{% static 'base/img/background2.png' %}" class="bg"/>
         <div class="parallax">
             <div class="row">
                 {% block body %}

@@ -1,0 +1,52 @@
+{% extends 'hire_us/hire_us.html' %}
+{% load static %}
+
+
+{% block title %}
+Prices - Hire Us // Compendium Magic
+{% endblock %}
+
+
+{% block image1 %}<img src="{% static 'base/img/background2.png' %}">{% endblock %}
+
+{% block prices %}
+    <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2" style="opacity: 0.9; filter: alpha(opacity=90); position:fixed; margin-top:20vm">
+    <table class="table table-hover" style="background:#fff;">
+    <thead>
+      <tr>
+        <th>Job</th>
+        <th>Time</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Restaurant</td>
+            <td><div class="row">1 hour</div>
+                <div class="row">2 hours</div>
+            </td>
+            <td><div class="row">£20</div>
+                <div class="row">£30</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Close Up / Parlour Magic</td>
+            <td><div class="row">1 hour</div>
+                <div class="row">2 hours</div>
+            </td>
+            <td><div class="row">£150</div>
+                <div class="row">£250</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Stage</td>
+            <td><div class="row">1 hour</div>
+                <div class="row">1.5 hours</div>
+            </td>
+            <td><div class="row">£xxx</div>
+                <div class="row">£xxx</div>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+{% endblock %}

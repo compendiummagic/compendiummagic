@@ -21,6 +21,18 @@ padding-left: 10px;
 padding-right:10px;
 }
 
+img.bg {
+    min-height:100%;
+    min-width: 1024px;
+
+    width: 100%;
+    height:auto;
+
+    position: fixed;
+    top:0;
+    left:0;
+}
+
 .parallax {
     z-index: 1;
     width: 100%;
@@ -223,7 +235,6 @@ padding-right:10px;
     display: inline-block;
     text-align:center;
     padding: 10px;
-    vertical-align: top;
 }
 
 .act_name {
@@ -246,29 +257,5 @@ padding-right:10px;
 }
 
 .act_bio {
-}
 
-/* reviews styles */
-.review_display{
-    text-align: center;
-    display: block;
-}
-
-.reviews {
-    width:250px;
-    display: inline-block;
-    text-align:center;
-    padding: 10px;
-    padding-top: 100px;
-    vertical-align: top;
-}
-
-.reviews_text {
-    display: block;
-}
-
-.reviews_info {
-    padding-top: 10px;
-    display:block;
-    font-weight:bold
 }

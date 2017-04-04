@@ -2,12 +2,54 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Book, Misc, Apparel, ReviewBook, ReviewApparel, ReviewMisc, Cart, BookOrder, MiscOrder, ApparelOrder
-from .models import Trick, ReviewTrick, TrickOrder
+from .models import Trick, ReviewTrick, TrickOrder, Act, Review, Item
 from .forms import ReviewForm
 
 # Create your views here.
 def index(request):
     return render(request, "base.html")
+
+def hire_us(request, identifier):
+    identifier = int(identifier)
+    context = {
+        'identifier': identifier,
+    }
+    if identifier == 0:
+        context['acts'] = Act.objects.all().filter(stage=True)
+        return render(request, "hire_us/stage.html", context)
+    elif identifier == 1:
+        context['acts'] = Act.objects.all().filter(restaurant=True)
+        return render(request, "hire_us/restaurant.html", context)
+    elif identifier == 2:
+        context['acts'] = Act.objects.all().filter(close_up=True)
+        return render(request, "hire_us/close_up.html", context)
+    elif identifier == 3:
+        return render(request, "hire_us/prices.html", context)
+
+def reviews(request, item_id):
+    item = get_object_or_404(Item, id=item_id)
+    context = {
+        'item': item,
+    }
+
+    if request.user.is_authenticated():
+        if request.method == "POST":
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                new_review = Review.objects.create(
+                    user=request.user,
+                    item=context['item'],
+                    text=form.cleaned_data.get('text'),
+                )
+                new_review.save()
+
+        else:
+            if Review.objects.filter(user=request.user, item=context['item']).count() == 0:
+                form = ReviewForm()
+                context['form'] = form
+    context['reviews'] = item.review_set.all()
+
+    return render(request, 'hire_us/reviews.html', context)
 
 def shop(request, identifier):
     books = Book.objects.order_by('author')
@@ -31,6 +73,7 @@ def shop(request, identifier):
         'books': books,
         'miscs': miscs,
         'clothes': clothes,
+        'identifier': identifier,
     }
     return render(request, "store/shop.html", context)
 

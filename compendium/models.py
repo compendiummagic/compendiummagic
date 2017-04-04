@@ -13,6 +13,8 @@ def apparel_cover_upload_path(instance, filename):
     return '/'.join(['apparel', str(instance.id), filename])
 def trick_cover_upload_path(instance, filename):
     return '/'.join(['trick', str(instance.id), filename])
+def act_cover_upload_path(instance, filename):
+    return '/'.join(['act', str(instance.id), filename])
 
 
 class ApparelType(models.Model):
@@ -37,6 +39,12 @@ class TrickType(models.Model):
     def __unicode__(self):
         return "%s" % (self.type)
 
+class ActStyle(models.Model):
+    style = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return "%s" % (self.style)
+
 class Difficulty(models.Model):
     rating = models.TextField(max_length=200)
 
@@ -50,7 +58,10 @@ class Book(models.Model):
     publish_date = models.DateField(default=timezone.now)
     price = models.DecimalField(default=0.0, decimal_places=2, max_digits=8)
     quantity = models.IntegerField(default = 0)
-    cover_image = models.ImageField(upload_to=book_cover_upload_path, default='books/image_not_available.jpg')
+    cover_image = models.ImageField(upload_to=book_cover_upload_path, default='image_not_available.jpg')
+
+class Item(models.Model):
+    title = models.CharField(max_length=200, default='Website')
 
 class Misc(models.Model):
     title = models.CharField(max_length=200)
@@ -60,7 +71,7 @@ class Misc(models.Model):
     publish_date = models.DateField(default=timezone.now)
     price = models.DecimalField(default=0.0, decimal_places=2, max_digits=8)
     quantity = models.IntegerField(default = 0)
-    cover_image = models.ImageField(upload_to=misc_cover_upload_path, default='misc/image_not_available.jpg')
+    cover_image = models.ImageField(upload_to=misc_cover_upload_path, default='image_not_available.jpg')
 
 class Apparel(models.Model):
     title = models.CharField(max_length=200)
@@ -71,7 +82,7 @@ class Apparel(models.Model):
     publish_date = models.DateField(default=timezone.now)
     price = models.DecimalField(default=0.0, decimal_places=2, max_digits=8)
     quantity = models.IntegerField(default = 0)
-    cover_image = models.ImageField(upload_to=apparel_cover_upload_path, default='apparel/image_not_available.jpg')
+    cover_image = models.ImageField(upload_to=apparel_cover_upload_path, default='image_not_available.jpg')
 
 class Trick(models.Model):
     title = models.CharField(max_length=200)
@@ -83,8 +94,24 @@ class Trick(models.Model):
     publish_date = models.DateField(default=timezone.now)
     price = models.DecimalField(default=0.0, decimal_places=2, max_digits=8)
     quantity = models.IntegerField(default = 0)
-    cover_image = models.ImageField(upload_to=trick_cover_upload_path, default='trick/image_not_available.jpg')
+    cover_image = models.ImageField(upload_to=trick_cover_upload_path, default='image_not_available.jpg')
 
+class Act(models.Model):
+    name = models.CharField(max_length=200)
+    style = models.ForeignKey(ActStyle)
+    restaurant = models.BooleanField(default=False)
+    stage = models.BooleanField(default=False)
+    close_up = models.BooleanField(default=False)
+    bio = models.TextField()
+    speciality = models.CharField(max_length=200, default='All-Rounder')
+    image = models.ImageField(upload_to=act_cover_upload_path, default='image_not_available.jpg')
+    website = models.CharField(max_length=200, default='http://localhost:8000/compendiummagic/')
+
+class Review(models.Model):
+    user = models.ForeignKey(User)
+    item = models.ForeignKey(Item)
+    publish_date = models.DateField(default=timezone.now)
+    text = models.TextField()
 
 class ReviewBook(models.Model):
     book = models.ForeignKey(Book)

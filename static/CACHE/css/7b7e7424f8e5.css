@@ -251,24 +251,4 @@ padding-right:10px;
 /* reviews styles */
 .review_display{
     text-align: center;
-    display: block;
-}
-
-.reviews {
-    width:250px;
-    display: inline-block;
-    text-align:center;
-    padding: 10px;
-    padding-top: 100px;
-    vertical-align: top;
-}
-
-.reviews_text {
-    display: block;
-}
-
-.reviews_info {
-    padding-top: 10px;
-    display:block;
-    font-weight:bold
 }
