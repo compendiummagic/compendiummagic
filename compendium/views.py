@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import EmailMultiAlternatives
+from django.template import Context
+from django.template.loader import render_to_string
 
 from .models import Book, Misc, Apparel, ReviewBook, ReviewApparel, ReviewMisc, Cart, BookOrder, MiscOrder, ApparelOrder
 from .models import Trick, ReviewTrick, TrickOrder, Act, Review, Item
-from .forms import ReviewForm
+from .forms import ReviewForm, ContactForm
 
 # Create your views here.
 def index(request):
@@ -272,3 +275,61 @@ def cart(request):
         return render(request, 'store/cart.html', context)
     else:
         return redirect('index')
+
+def contact_us(request):
+
+    context= {
+        'registered':request.user.is_authenticated,
+        'complete': False,
+    }
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = ContactForm(request.POST)
+
+            if form.is_valid():
+                subject = 'Compendium Magic Enquiry'
+                from_email = 'contact@compendiummagic.co.uk'
+                to_email_customer = [request.user.email]
+                to_email_compendium = ['tomdykes1994@gmail.com']
+
+                email_context = Context ({
+                    'name': request.user.username,
+                    'phone':form.cleaned_data.get('phone'),
+                    'email': request.user.email,
+                    'date':form.cleaned_data.get('date'),
+                    'time':form.cleaned_data.get('time'),
+                    'venue':form.cleaned_data.get('venue'),
+                    'guests':form.cleaned_data.get('guests'),
+                    'extra_info':form.cleaned_data.get('extra_info'),
+                    'hear':form.cleaned_data.get('hear'),
+                })
+
+
+                text_email = render_to_string('email/contact_request_email.txt', email_context)
+                html_email = render_to_string('email/contact_request_email.html', email_context)
+
+                msg = EmailMultiAlternatives(subject, text_email, from_email, to_email_customer)
+                msg.attach_alternative(html_email, 'text/html')
+                msg.content_subtype = 'html'
+                msg.send()
+
+                subject = 'Job Request: '+str(request.user.username)
+
+                text_email = render_to_string('email/job_enquiry_email.txt', email_context)
+                html_email = render_to_string('email/job_enquiry_email.html', email_context)
+
+                msg = EmailMultiAlternatives(subject, text_email, from_email, to_email_compendium)
+                msg.attach_alternative(html_email, 'text/html')
+                msg.content_subtype = 'html'
+                msg.send()
+
+                context['complete'] = True
+            else:
+                context['form'] = form
+        else:
+            form = ContactForm()
+            context['form'] = form
+
+    return render(request, 'contact_us/contact_us.html', context)
+
+

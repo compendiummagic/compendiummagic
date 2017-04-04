@@ -1,0 +1,17 @@
+Hi there {{ name }}
+
+We're just going to have a look at your requirements and we'll be in touch as soon as possible.
+
+You'll be contacted either via email: {{ email }}, or by phone: {{ phone }}
+
+please find your details below.
+
+Date: {{ date }}
+Time: {{ time }}
+Venue: {{ venue }}
+Guests: {{ guests }}
+Extra Information:{{ extra_info }}
+
+Speak to you soon!
+
+The Compendium Magic Team

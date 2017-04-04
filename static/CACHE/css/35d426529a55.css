@@ -280,50 +280,29 @@ padding-right:10px;
     text-align: center;
 }
 
-
-.contact_us_label{
-    display:block;
-    width:100%;
-}
-
-.contact_us_error{
-    padding: 0px;
-    width:100%;
-}
-
-.contact_us_input input,textarea{
-    display:block;
-    width:100%;
-    border-radius: 4px;
+.contact_us_form form p input {
     border: 1px solid grey;
-    padding-left: 5px;
-    padding-right: 5px;
+    border-radius: 2px;
 }
 
-
-.contact_us_button {
-    text-align: center;
-    font-size: 16px;
-    padding: 10px;
-    margin-top: 10px;
+.contact_us_form form p input,label{
+    display:block;
+    width:100%;
 }
+.contact_us_form form p textarea {
+    display:block;
+    width:100%;
 
+}
 .contact_us_img {
     padding-top: 20px;
     padding-bottom: 20px;
     margin:auto;
-    align:right;
 }
 
-.contact_us_img img {
-    width:100%;
-}
-
-.contact_us_login_img img{
-    width: 100%;
-}
-@media (max-width: 767px){
-    .contact_us_img {
-        display: none;
-    }
+.contact_us_button {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid grey;
 }

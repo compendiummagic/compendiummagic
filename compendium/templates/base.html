@@ -57,7 +57,7 @@
                             <li><a href="{% url 'trick_shop' 0 %}">Tricks</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
                     {% if request.user.is_superuser %}
                     <li><a href="#">Tricks</a></li>
                     {% endif %}
@@ -90,7 +90,7 @@
         <div class="parallax">
             <div class="row">
                 {% block body %}
-                    <div class="col-md-12 maincontent">
+                    <div class="col-xs-12 maincontent">
                       <!----------------------carousel----------------------->
                       <div id="home-carousel" class="carousel slide carousel_home" data-ride="carousel">
                       <!-- Indicators -->

@@ -1,0 +1,12 @@
+You have a job request
+
+Name: {{ name }}
+Email: {{ email }}
+Phone: {{ phone }}
+Date: {{ date }}
+Time: {{ time }}
+Venue: {{ venue }}
+Guests: {{ guests }}
+Extra Information:{{ extra_info }}
+
+This message will self destruct in 10 seconds.
