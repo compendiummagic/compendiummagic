@@ -37,8 +37,7 @@ padding-right:10px;
     background-color:#fff;
     /*opacity: 0.9;
     filter: alpha(opacity=90);*/
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
+    border: 1px dashed black
 }
 
 .text_image_holder{
@@ -114,7 +113,6 @@ padding-right:10px;
     position: relative;
     padding-bottom: 60px;
     min-height:70vh;
-
 }
 
 .shop_book_display {

@@ -114,6 +114,8 @@ padding-right:10px;
     position: relative;
     padding-bottom: 60px;
     min-height:70vh;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
 
 }
 
@@ -226,6 +228,8 @@ padding-right:10px;
     text-align:center;
     padding: 10px;
     vertical-align: top;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
 }
 
 .act_name {
