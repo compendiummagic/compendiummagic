@@ -1,12 +1,60 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}
+Order Summary - Compendium Magic
+{% endblock %}
+
 {% block body %}
 <div class="col-md-8 col-md-offset-2 col-sm-12 maincontent">
     <div style="text-align:center;text-decoration:underline"><h3>Order Summary</h3></div>
     <div class="cart_container">
         {{ message }}
+        <!------------------items display----------------->
+        {% for item in book_cart %}
+        <div class="cart_item">
+            <div class="cart_listing">
+                <span class="title">{{ item.item.title }}</span> by {{ item.item.author }}
+            </div>
+            <div class="cart_price pull-right">
+                <span class="cart_quantity">{{ item.quantity }} x £<span class="cart_value">{{ item.item.price }}</span></span>
+            </div>
+        </div>
+        {% endfor %}
+        {% for item in misc_cart %}
+        <div class="cart_item">
+            <div class="cart_listing">
+                <span class="title">{{ item.item.title }}</span> by {{ item.item.designer }}
+            </div>
+            <div class="cart_price pull-right">
+                <span class="cart_quantity">{{ item.quantity }} x £<span class="cart_value">{{ item.item.price }}</span></span>
+            </div>
+        </div>
+        {% endfor %}
+        {% for item in apparel_cart %}
+        <div class="cart_item">
+            <div class="cart_listing">
+                <span class="title">{{ item.item.title }}</span> by {{ item.item.designer }}
+            </div>
+            <div class="cart_price pull-right">
+                <span class="cart_quantity">{{ item.quantity }} x £<span class="cart_value">{{ item.item.price }}</span></span>
+            </div>
+        </div>
+        {% endfor %}
+        {% for item in trick_cart %}
+        <div class="cart_item">
+            <div class="cart_listing">
+                <span class="title">{{ item.item.title }}</span> by {{ item.item.designer }}
+            </div>
+            <div class="cart_price pull-right">
+                <span class="cart_quantity">{{ item.quantity }} x £<span class="cart_value">{{ item.item.price }}</span></span>
+            </div>
+        </div>
+        {% endfor %}
+        <!----------------end items display------------------>
+        <div class="cart_total">
+            <h4>Total: £<span class="cart_value">{{ total }}</span></h4>
+        </div>
     </div>
 </div>
-
 {% endblock %}

@@ -20,5 +20,13 @@ urlpatterns = [
     url(r'^remove/(\d+)(\d+)', views.remove_from_cart, name='remove_from_cart'),
     url(r'^cart/', views.cart, name='cart'),
 
+    url(r'^process/(\w+)', views.process_order, name='process_order'),
+    url(r'^checkout/(\w+)', views.checkout, name='checkout'),
+    url(r'^order_error/', views.order_error, name='order_error'),
+    url(r'^complete_order/(\w+)', views.complete_order, name='complete_order'),
+
+    url(r'^shipping_info/', views.shipping_info, name='shipping_info'),
+
     url(r'^contact_us/', views.contact_us, name='contact_us'),
+
 ]

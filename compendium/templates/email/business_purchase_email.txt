@@ -1,13 +1,12 @@
-Hello {{ name }}, your purchase details are below
+Name: {{ name }}
+email: {{ email }}
 
-Your items will be sent to:
+Address:
 
 {{ address_line_1 }}
 {{ address_line_2 }}
 {{ address_line_3 }}
 {{ address_line_4 }}
-
-Any tutorials will be sent to your email address: {{ email }}
 
 Total: £{{ total }}
 
@@ -27,6 +26,4 @@ Total: £{{ total }}
 {{ item.quantity }} x {{ item.item.title }} by {{ item.item.designer }}
 {% endfor %}
 
-Thank you for your Order
-
-The Compendium Magic Team
+This message will self destruct in 10 seconds

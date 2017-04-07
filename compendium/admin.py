@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Book, Misc, Apparel, ApparelSize, ApparelType, MiscType, TrickType, Difficulty, Trick, Act, ActStyle
-from .models import Item
+from .models import Item, Cart
 # Register your models here.
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'price', 'quantity')
@@ -38,12 +38,16 @@ class DifficutyAdmin(admin.ModelAdmin):
 class ApparelSizeAdmin(admin.ModelAdmin):
     list_display = ('size',)
 
+class CartAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'active')
+
 admin.site.register(Book, BookAdmin)
 admin.site.register(Misc, MiscAdmin)
 admin.site.register(Apparel, ApparelAdmin)
 admin.site.register(Trick, TrickAdmin)
 admin.site.register(Act, ActAdmin)
 admin.site.register(Item, ItemAdmin)
+admin.site.register(Cart, CartAdmin)
 
 admin.site.register(ApparelSize, ApparelSizeAdmin)
 admin.site.register(ApparelType, ApparelTypeAdmin)

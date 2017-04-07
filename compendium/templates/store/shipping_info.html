@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+Shipping Info - Compendium Magic
+{% endblock %}
+
+{% block body %}
+<div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 maincontent">
+    <div style="text-align:center; text-decoration:underline"><h3>Billing Information</h3></div>
+    <div class="cart_container">
+        <div class="col-xs-12" style="border-bottom: 1px solid black;">
+            <!----------------------addresses----------------------------->
+            <div class="col-xs-12 col-sm-6">
+            <h4 style="text-align: center; font-weight:bold;">Select Address</h4>
+                {% for item in shipping %}
+                <form action="{% url 'shipping_info' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group hidden">
+                    <input type="text" class="form-control hidden" name="active_address" id="{{ item.id }}" value="{{ item.id }}"/>
+                    </div>
+                    <button type="submit" class="col-xs-12 col-sm-5 shipping_address btn btn-primary {% if item.active %} active {% endif %}" >
+                        <p>{{ item.first_name }} {{ item.last_name }}</p>
+                        <p>{{ item.house_number }} {{ item.street_name }}</p>
+                        <p>{{ item.county }} {{ item.country }}</p>
+                        <p>{{ item.postcode }}</p>
+                        {% if item.active != True %}<a href="{% url 'shipping_info' %}">activate</a>{% endif %}
+                    </button>
+                </form>
+                {% endfor %}
+            </div>
+            <!--------------------addresses end---------------------------->
+
+            <div class="col-xs-12 col-sm-6">
+            <!-------------------------Billing Form------------------------>
+                <h4 style="text-align: center; font-weight:bold;">Create New Address</h4>
+                <form class="form-inline" action="{% url 'shipping_info' %}" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="contact_us_label">
+                        {{ field.label_tag }}
+                        </div>
+                        <div class="contact_us_input">
+                        {{ field }}
+                        </div>
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger contact_us_error">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    <div class="contact_us_button">
+                        <input type="submit" value="Submit" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-------------------------End Form------------------------>
+
+        <div class="pull-right payment_buttons">
+            {% if active_address%}
+            <form action="{% url 'checkout' 'stripe' %}" method="POST">
+            {% csrf_token %}
+            <script
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button pull-right"
+              data-key="pk_test_jisarlTLQbriHQ4sLgusoZrX"
+              data-amount="{{ total|to_pence }}"
+              data-name="Pentagram Magic LLP"
+              data-description="{{ count }} items"
+              data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+              data-locale="auto"
+              data-currency="gbp">
+            </script>
+            </form>
+            {% else %}
+            <button class="btn btn-danger" disabled>Select Address to Pay</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

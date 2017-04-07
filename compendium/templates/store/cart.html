@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block title %}
 Shopping Cart - Compendium Magic
@@ -58,6 +59,10 @@ Shopping Cart - Compendium Magic
         <div class="cart_total">
             <h4>Total: £<span class="cart_value">{{ total }}</span></h4>
         </div>
+        {% if book_cart or misc_cart or trick_cart or apparel_cart %}
+        <div class="pull-right">
+            <a href="{% url 'shipping_info' %}"><button class="btn btn-success">Pay Now</button></a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

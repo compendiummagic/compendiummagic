@@ -277,3 +277,14 @@ class TrickOrder(models.Model):
     item = models.ForeignKey(Trick)
     cart = models.ForeignKey(Cart)
     quantity = models.IntegerField()
+
+class ShippingInfo(models.Model):
+    user = models.ForeignKey(User)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    street_name = models.CharField(max_length=200)
+    house_number = models.CharField(max_length=200)
+    postcode = models.CharField(max_length=200)
+    country = models.CharField(max_length=200)
+    county = models.CharField(max_length=200)
+    active = models.BooleanField(default=False)

@@ -1,13 +1,13 @@
-<p>Hello {{ name }}, your purchase details are below</p>
+<p>Name: {{ name }}</p>
+<p>Email: {{ email }}</p>
 
-<p>Your items will be sent to:</p>
+<p>Address:</p>
 
 <p>{{ address_line_1 }}</p>
 <p>{{ address_line_2 }}</p>
 <p>{{ address_line_3 }}</p>
 <p>{{ address_line_4 }}</p>
 
-<p>Any tutorials will be sent to your email address: {{ email }}</p>
 
 <p>Total: £{{ total }}</p>
 
@@ -27,6 +27,4 @@
 <p>{{ item.quantity }} x {{ item.item.title }} by {{ item.item.designer }}</p>
 {% endfor %}
 
-<p>Thanks for your order</p>
-
-<p>The Compendium Magic Team</p>
+<p>This message will self destruct in 10 seconds</p>

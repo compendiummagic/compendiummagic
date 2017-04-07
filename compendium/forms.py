@@ -26,3 +26,12 @@ class ContactForm(forms.Form):
     guests = forms.ChoiceField(choices=CHOICES, label='Number of Guests')
     extra_info = forms.CharField(widget=forms.Textarea, label='Extra Information', required=False)
     hear = forms.CharField(max_length=100, label='How did you hear of us?', required=False)
+
+class ShippingForm(forms.Form):
+    first_name = forms.CharField(max_length=50, label='First Name')
+    last_name = forms.CharField(max_length=50, label='Last Name')
+    house_number = forms.CharField(max_length=200, label='House Number')
+    street_name = forms.CharField(max_length=200, label='Street Name')
+    postcode = forms.CharField(max_length=200, label='Post Code')
+    county = forms.CharField(max_length=200, label='County')
+    country = forms.CharField(max_length=200, label='Country')
