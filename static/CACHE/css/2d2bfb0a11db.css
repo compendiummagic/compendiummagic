@@ -104,15 +104,10 @@ padding-right:10px;
     z-index:2;
 }
 
-.shop_merchandise {
-    min-width: 350px;
-}
-
 .shop_sidenav {
     margin-left: -5px;
     min-height: 69%;
     max-width: 250px;
-    min-width: 200px;
     position: fixed;
 }
 
@@ -195,16 +190,7 @@ padding-right:10px;
 
 
 .video_detail {
-    margin-left:0;
-    margin-right:0;
     max-width: 100%;
-    height: 500px;
-}
-
-@media (max-width: 767px){
-    .video_detail {
-        height:300px;
-    }
 }
 
 /* cart styles */
