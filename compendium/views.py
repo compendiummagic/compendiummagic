@@ -620,6 +620,7 @@ def shipping_info(request):
             'shipping': shipping,
             'total': total,
             'count': count,
+            'stripe_data_key': settings.STRIPE_DATA_KEY,
         }
 
         if request.method == "POST":

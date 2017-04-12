@@ -7,7 +7,7 @@ Shipping Info - Compendium Magic
 {% endblock %}
 
 {% block body %}
-<div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 maincontent" style=" padding-bottom:60px;">
+<div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 maincontent shop_border" style=" padding-bottom:60px;">
     <div style="text-align:center; text-decoration:underline;"><h3>Billing Information</h3></div>
     <div class="cart_container">
         <div class="col-xs-12" style="border-bottom: 1px solid black;">
@@ -21,11 +21,11 @@ Shipping Info - Compendium Magic
                     <input type="text" class="form-control hidden" name="active_address" id="{{ item.id }}" value="{{ item.id }}"/>
                     </div>
                     <button type="submit" class="col-xs-12 col-sm-5 shipping_address btn btn-primary {% if item.active %} active {% endif %}" >
-                        <p>{{ item.first_name }} {{ item.last_name }}</p>
-                        <p>{{ item.house_number }} {{ item.street_name }}</p>
-                        <p>{{ item.county }} {{ item.country }}</p>
-                        <p>{{ item.postcode }}</p>
-                        {% if item.active != True %}<a href="{% url 'shipping_info' %}">activate</a>{% endif %}
+                        <div>{{ item.first_name }} {{ item.last_name }}</div>
+                        <div>{{ item.house_number }}</div> <div>{{ item.street_name }}</div>
+                        <div>{{ item.county }} {{ item.country }}</div>
+                        <div>{{ item.postcode }}</div>
+                        {% if item.active != True %}<a href="{% url 'shipping_info' %}"></a>{% endif %}
                     </button>
                 </form>
                 {% endfor %}
@@ -64,7 +64,7 @@ Shipping Info - Compendium Magic
             {% csrf_token %}
             <script
               src="https://checkout.stripe.com/checkout.js" class="stripe-button pull-right"
-              data-key="pk_test_jisarlTLQbriHQ4sLgusoZrX"
+              data-key="{{stripe_data_key}}"
               data-amount="{{ total|to_pence }}"
               data-name="Pentagram Magic LLP"
               data-description="{{ count }} items"

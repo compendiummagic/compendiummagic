@@ -153,3 +153,4 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 }
 
 STRIPE_API_KEY = "sk_test_pqmmt7aWtfKqJOgIUjh0jaW3"
+STRIPE_DATA_KEY = "pk_test_jisarlTLQbriHQ4sLgusoZrX"
