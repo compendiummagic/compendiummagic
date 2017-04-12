@@ -4,7 +4,7 @@ body {
     padding:0px;
     font-color: #fff;
     min-height:100%;
-    background-image: url('bg_texture.png');
+    background-image: url('/static/base/css/bg_texture.png');
 }
 
 .wrapper {

@@ -1,4 +1,4 @@
-{% extends 'hire_us/hire_us.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 
@@ -6,47 +6,34 @@
 Prices - Hire Us // Compendium Magic
 {% endblock %}
 
-
-{% block image1 %}<img src="{% static 'base/img/background2.png' %}">{% endblock %}
-
-{% block prices %}
-    <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2" style="opacity: 0.9; filter: alpha(opacity=90); position:fixed; margin-top:20vm">
+{% block body %}
+<div class="col-sm-8 col-sm-offset-2 col-xs-12 prices_container">
     <table class="table table-hover" style="background:#fff;">
-    <thead>
-      <tr>
-        <th>Job</th>
-        <th>Time</th>
-        <th class="pull-right">Price</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Restaurant</td>
-            <td><div class="row">1 hour</div>
-                <div class="row">2 hours</div>
-            </td>
-            <td class="pull-right"><div class="row">£20</div>
-                <div class="row">£30</div>
-            </td>
-        </tr>
-        <tr>
-            <td>Close Up / Parlour Magic</td>
-            <td><div class="row">1 hour</div>
-                <div class="row">2 hours</div>
-            </td>
-            <td class="pull-right"><div class="row">£150</div>
-                <div class="row">£250</div>
-            </td>
-        </tr>
-        <tr>
-            <td>Stage</td>
-            <td><div class="row">1 hour</div>
-                <div class="row">1.5 hours</div>
-            </td>
-            <td class="pull-right"><div class="row">£xxx</div>
-                <div class="row">£xxx</div>
-            </td>
-        </tr>
-    </tbody>
-  </table>
+        <thead>
+          <tr>
+            <th>Job</th>
+            <th>Times From:</th>
+            <th>Price from:</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Restaurant</td>
+                <td>1 hour</td>
+                <td>£20</td>
+            </tr>
+            <tr>
+                <td>Close Up</td>
+                <td>1 hour</td>
+                <td>£120</td>
+            </tr>
+            <tr>
+                <td>Parlour Magic</td>
+                <td>1 hour</td>
+                <td>£150</td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-success pull-right" href="{% url 'contact_us' %}">Enquire Now</a>
+</div>
 {% endblock %}

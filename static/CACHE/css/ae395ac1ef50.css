@@ -4,18 +4,15 @@ body {
     padding:0px;
     font-color: #fff;
     min-height:100%;
-    background-image: url('bg_texture.png');
 }
 
 .wrapper {
-    min-width:100%;
 	min-height:100%;
 	position:relative;
 }
 
 .container-fluid {
     z-index: 1;
-    min-width:100%;
     min-height:100%;
 }
 
@@ -39,15 +36,14 @@ padding-right:10px;
     height: 100%;
 }
 
-
 .maincontent {
     padding-top: 10vh;
     padding-bottom:30px;
     min-height: 100%;
     position: absolute;
     top:0;
-    /*background-color:#fff;
-    opacity: 0.9;
+    background-color:#fff;
+    /*opacity: 0.9;
     filter: alpha(opacity=90);
     border-left: 1px solid grey;
     border-right: 1px solid grey;*/
@@ -85,7 +81,6 @@ padding-right:10px;
     min-width:100%;
     margin-left:-20px;
     margin-right:-20px;
-    background-color: #fff;
 }
 .carousel-inner img{
     max-height:80vh;
@@ -104,7 +99,6 @@ padding-right:10px;
 
 /* shop styles */
 .shop_border{
-    background-color: #fff;
     border-left: 1px solid grey;
     border-right: 1px solid grey;
 }
@@ -272,13 +266,9 @@ padding-right:10px;
     vertical-align: top;
 }
 
-.act_display a {
-    color: black;
-}
-
 .act_display a:hover {
     text-decoration:none;
-    color: grey;
+    text-color: grey;
 }
 
 .act_name {
@@ -304,16 +294,11 @@ padding-right:10px;
 }
 
 /* reviews styles */
-.reviews_container{
-    min-height:100%;
-}
-
 .review_display{
     text-align: center;
     display: block;
     min-height:100%;
     min-height:100vh;
-    background-color: #fff;
 }
 .reviews_title{
     text-align: center;
@@ -339,17 +324,6 @@ padding-right:10px;
     display:block;
     font-weight:bold
 }
-
-.contact_content {
-    padding-top: 10vh;
-    padding-bottom:30px;
-    min-height: 100%;
-    position: absolute;
-    top:0;
-    background-color: #fff;
-
-}
-
 .contact_us_form{
     text-align: left;
     padding-bottom: 60px;
@@ -417,15 +391,4 @@ padding-right:10px;
 
 .payment_buttons {
     padding-top: 10px;
-}
-
-.prices_container{
-    border: 1px solid black;
-    background-color: #fff;
-    padding-top: 100px;
-    min-height:100%;
-    opacity: 0.9;
-    filter: alpha(opacity=90);
-    position:fixed;
-    margin-top:20vm
 }

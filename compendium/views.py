@@ -9,6 +9,7 @@ from django.utils import timezone
 
 import stripe, paypalrestsdk
 
+from compendiummagic import settings
 from .models import Book, Misc, Apparel, ReviewBook, ReviewApparel, ReviewMisc, Cart, BookOrder, MiscOrder, ApparelOrder
 from .models import Trick, ReviewTrick, TrickOrder, Act, Review, Item, ShippingInfo
 from .forms import ReviewForm, ContactForm, ShippingForm
@@ -293,9 +294,9 @@ def contact_us(request):
 
             if form.is_valid():
                 subject = 'Compendium Magic Enquiry'
-                from_email = 'contact@compendiummagic.co.uk'
+                from_email = settings.BOOKING_FROM_EMAIL
                 to_email_customer = [request.user.email]
-                to_email_compendium = ['tomdykes1994@gmail.com']
+                to_email_compendium = [settings.BOOKING_FROM_EMAIL]
 
                 email_context = Context ({
                     'name': request.user.username,
@@ -423,7 +424,7 @@ def checkout_paypal(request, cart, book_orders, misc_orders, apparel_orders, tri
 
 
 def checkout_stripe(cart, book_orders, misc_orders, apparel_orders, trick_orders, token):
-    stripe.api_key =  "sk_test_pqmmt7aWtfKqJOgIUjh0jaW3"
+    stripe.api_key =  settings.STRIPE_API_KEY
     total = 0
     orders_list = [book_orders, misc_orders, apparel_orders, trick_orders]
     for orders in orders_list:
@@ -539,9 +540,9 @@ def complete_order(request, processor):
         context["message"] = message
 
         subject = 'Compendium Magic Order'
-        from_email = 'shop@compendiummagic.co.uk'
+        from_email = settings.SHOP_FROM_EMAIL
         to_email_customer = [request.user.email]
-        to_email_compendium = ['tomdykes1994@gmail.com']
+        to_email_compendium = [settings.SHOP_FROM_EMAIL]
 
         for item in ShippingInfo.objects.filter(user=request.user, active=True):
             info = item

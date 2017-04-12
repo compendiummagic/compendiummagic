@@ -136,11 +136,14 @@ LOGIN_REDIRECT_URL = '/compendiummagic/'
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.mailgun.org"
-EMAIL_HOST_USER = "postmaster@sandbox717182cbda8f4a4885eca2799c73cda5.mailgun.org"
-EMAIL_HOST_PASSWORD = "cd534cba607361c4bd6a3feeb11f5528"
+EMAIL_HOST_USER = "postmaster@compendiummagic.co.uk"
+EMAIL_HOST_PASSWORD = "6503dc3a191dee3f65e7679553dd30f0"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'magic@compendiummagic.co.uk'
+BOOKING_FROM_EMAIL = 'booking@compendiummagic.co.uk'
+SHOP_FROM_EMAIL = 'shop@compendiummagic.co.uk'
+
 
 SOCIAL_AUTH_FACEBOOK_KEY = '457098351300227'
 SOCIAL_AUTH_FACEBOOK_SECRET = '465e9e540c4b8c82245efb981da10052'
@@ -148,3 +151,5 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'fields': 'email'
 }
+
+STRIPE_API_KEY = "sk_test_pqmmt7aWtfKqJOgIUjh0jaW3"
