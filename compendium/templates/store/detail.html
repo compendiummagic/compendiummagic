@@ -6,13 +6,11 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="col-md-9 col-sm-8 col-xs-6 col-md-offset-3 clo-sm-offset-4 col-xs-offset-6 shop_content">
     <div class="detail_book_display">
         <img class="detail_book_img" src="{{ MEDIA_URL }}{{ book.cover_image }}">
         <span class="detail_book_title">{{ book.title }}</span>
         <span class="detail_book_author">{{ book.author }}</span>
-        <div class="detail_book_description">{{ book.description }}</div>
+        <div class="detail_book_description"><p>{{ book.description }}</p></div>
         <div class="detail_book_reviews_title">Reviews {% if reviews %}({{ reviews.count }}){% endif %}</div>
         <div class="detail_book_reviews">
             <div class = "col-md-6 col-md-offset-3" style="margin-left:auto, margin-right:auto">
@@ -27,7 +25,7 @@
                 {% endif %}
                 {% for review in reviews %}
                 <div>
-                    {{ review.text }}
+                    <p>{{ review.text }}</p>
                 </div>
                 <div style="font-weight:bold">
                     -{{ review.user.username }} on {{ review.publish_date }}
@@ -40,6 +38,5 @@
             </div>
         </div>
     </div>
-</div>
 
 {% endblock %}

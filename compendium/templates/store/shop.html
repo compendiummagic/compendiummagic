@@ -6,32 +6,32 @@
 {% endblock %}
 
 {% block body %}
-<div class="col-md-8 col-md-offset-2 col-xs-12 maincontent shop_border shop_merchandise">
+<div class="col-md-8 col-md-offset-2 col-xs-12 maincontent shop_border" style="min-width: 375px;">
     {% block shop_header %}
     <div class="shop_header navbar navbar-default"><h3>Welcome to our Shop!</h3></div>
     {% endblock %}
-        <div class="row">
-        {% block sidebar %}
-        <div class="shop_sidenav navbar navbar-default col-sm-3 col-xs-6">
-            <form class="navbar-form navbar-left">
-                <h4>Search by Category</h4>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search">
-                  <span class="input-group-btn">
-                      <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                  </span>
-                  </div>
-            </form>
+        <div class="shop_sidenav navbar navbar-default col-sm-2 col-xs-6">
             <ul>
                 <li><a href="{% url 'shop' 0 %}" {% if identifier == 0 %}style="font-weight:bold"{% endif %}>All</a></li>
                 <li><a href="{% url 'shop' 1 %}" {% if identifier == 1 %}style="font-weight:bold"{% endif %}>Books</a></li>
                 <li><a href="{% url 'shop' 3 %}" {% if identifier == 3 %}style="font-weight:bold"{% endif %}>Apparel</a></li>
-                <li><a href="{% url 'shop' 2 %}" {% if identifier == 2 %}style="font-weight:bold"{% endif %}>Miscellaneous</a></li>
+                <li><a href="{% url 'shop' 2 %}" {% if identifier == 2 %}style="font-weight:bold"{% endif %}>Misc</a></li>
             </ul>
         </div>
-        {% endblock %}
-        {% block content %}
-        <div class="shop_content container-fluid col-sm-9 col-xs-6 col-sm-offset-4 col-xs-offset-6">
+        <div class="shop_content col-sm-10 col-xs-6 col-sm-offset-2 col-xs-offset-6">
+            {% block content %}
+            <h2 style="text-align:center;">
+                {% if identifier == 0 %}
+                    All
+                {% elif identifier == 1 %}
+                    Books
+                {% elif identifier == 2 %}
+                    Miscellaneous
+                {% elif identifier == 3 %}
+                    Apparel
+                {% else %}
+                {% endif %}
+            </h2>
         {% for book in books %}
             <div class="shop_book_display">
                 <a href="{% url 'book_details' book.id %}">
@@ -73,8 +73,7 @@
                 </span>
             </div>
         {% endfor %}
-        {% endblock %}
-        </div>
+            {% endblock %}
         </div>
     </div>
 {% endblock %}

@@ -14,6 +14,7 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
     {% compress css %}
     <link href="{% static 'base/css/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'base/css/font-awesome.css' %}" rel="stylesheet" type="text/css">
     {% endcompress %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
@@ -35,9 +36,7 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    menu <i class="fa fa-caret-down"></i>
                 </button>
                 <a href="{% url 'index' %}" class="navbar-brand navbar_logo"><img class="navbar_logo_img" src="{% static 'base/img/logo.png' %}"/></a>
             </div>
@@ -98,30 +97,24 @@
                     <div class="col-xs-12 maincontent">
                       <!----------------------carousel----------------------->
                       <div id="home-carousel" class="carousel slide carousel_home" data-ride="carousel">
-                      <!-- Indicators -->
-                      <ol class="carousel-indicators">
-                        <li data-target="#home-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#home-carousel" data-slide-to="1"></li>
-                        <li data-target="#home-carousel" data-slide-to="2"></li>
-                      </ol>
 
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner" role="listbox">
                         <div class="item active">
                           <img src="{% static 'base/img/background2.png' %}">
-                          <div class="carousel-caption">
-                              <h3>Welcome to Compendium Magic!</h3>
+                          <div class="carousel-content home_caption">
+                              <h3>Welcome to Compendium Magic</h3>
                           </div>
                         </div>
                         <div class="item">
                           <img src="{% static 'base/img/background3.png' %}">
-                          <div class="carousel-caption">
-                              <h3>Hire us today for all your magical entertainment needs</h3>
+                          <div class="carousel-content home_caption">
+                              <h3>Hire us today for parties, corporate events, shows and more</h3>
                           </div>
                         </div>
                         <div class="item">
                           <img src="{% static 'base/img/background4.png' %}">
-                          <div class="carousel-caption">
+                          <div class="carousel-content home_caption">
                               <h3>Or visit our store and browse our merchandise and tricks</h3>
                           </div>
                         </div>

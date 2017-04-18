@@ -4,7 +4,7 @@ body {
     padding:0px;
     font-color: #fff;
     min-height:100%;
-    background-image: url('bg_texture.png');
+    background-image: url('/static/base/css/bg_texture.png');
 }
 
 .wrapper {
@@ -76,7 +76,6 @@ padding-right:10px;
   position: fixed;
   opacity: 0.5;
   filter: alpha(opacity=50);
-  z-index: 1;
 }
 
 .carousel_home {
@@ -89,7 +88,7 @@ padding-right:10px;
     background-color: #fff;
 }
 .carousel-inner img{
-    max-height:60vh;
+    max-height:80vh;
     margin:auto;
     overflow:auto;
 }
@@ -103,13 +102,10 @@ padding-right:10px;
 }
 @media (max-width: 767px){
     .carousel_home{
-        padding-top: 20px;
+        padding-top: 60px;
     }
     .carousel-caption h3{
         font-size: 20px;
-    }
-    .carousel-inner img{
-        max-height:40vh;
     }
 }
 
@@ -137,8 +133,8 @@ padding-right:10px;
 .shop_sidenav {
     margin-left: -5px;
     min-height: 69%;
-    max-width: 150px;
-    min-width: 100px;
+    max-width: 250px;
+    min-width: 200px;
     position: fixed;
 }
 
@@ -160,12 +156,12 @@ padding-right:10px;
 .shop_content{
     position: relative;
     padding-bottom: 60px;
-    padding-right: 30px;
     min-height:70vh;
+
 }
 
 .shop_book_display {
-    width:180px;
+    width:200px;
     display: inline-block;
     text-align:center;
 }
@@ -186,7 +182,6 @@ padding-right:10px;
 
 /* book detail styles */
 .detail_book_display {
-    width:100%;
     text-align: center;
     margin-top: 20px;
 }
@@ -205,10 +200,9 @@ padding-right:10px;
     display: block;
 }
 .detail_book_description {
-    word-wrap:break-word;
     text-align: left;
     margin-top: 20px;
-    width:100%;
+    width:80%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -279,7 +273,7 @@ padding-right:10px;
 /* act styles */
 
 .act_display {
-    width:200px;
+    width:400px;
     display: inline-block;
     text-align:center;
     padding: 10px;
@@ -293,10 +287,6 @@ padding-right:10px;
 .act_display a:hover {
     text-decoration:none;
     color: grey;
-}
-
-.act_display a:active {
-    text-decoration:none;
 }
 
 .act_name {
@@ -327,17 +317,22 @@ padding-right:10px;
 }
 
 .review_display{
+    text-align: center;
+    display: block;
     min-height:100%;
+    min-height:100vh;
     background-color: #fff;
 }
 .reviews_title{
     text-align: center;
+    padding-top: 80px;
     font-weight:bold;
 }
 
 .reviews {
     width:250px;
     display: inline-block;
+    text-align:center;
     padding: 10px;
     padding-top: 10px;
     vertical-align: top;
@@ -441,26 +436,4 @@ padding-right:10px;
     filter: alpha(opacity=90);
     position:fixed;
     margin-top:20vm
-}
-
-.hireus_sidenav {
-    margin-left: -15px;
-    min-height: 69%;
-    max-width: 250px;
-    min-width: 200px;
-}
-
-.hireus_sidenav ul{
-    text-decoration:bold;
-}
-
-.hireus_sidenav ul li{
-    list-style-type: none;
-    padding:10px;
-    margin-left: -20px;
-    border-bottom: 1px solid grey;
-}
-
-.hireus_sidenav ul .active{
-    font-weight: bold;
 }

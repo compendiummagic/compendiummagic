@@ -4,7 +4,7 @@ body {
     padding:0px;
     font-color: #fff;
     min-height:100%;
-    background-image: url('bg_texture.png');
+    background-image: url('/static/base/css/bg_texture.png');
 }
 
 .wrapper {
@@ -137,8 +137,8 @@ padding-right:10px;
 .shop_sidenav {
     margin-left: -5px;
     min-height: 69%;
-    max-width: 150px;
-    min-width: 100px;
+    max-width: 250px;
+    min-width: 200px;
     position: fixed;
 }
 
@@ -160,12 +160,12 @@ padding-right:10px;
 .shop_content{
     position: relative;
     padding-bottom: 60px;
-    padding-right: 30px;
     min-height:70vh;
+
 }
 
 .shop_book_display {
-    width:180px;
+    width:200px;
     display: inline-block;
     text-align:center;
 }
@@ -186,7 +186,6 @@ padding-right:10px;
 
 /* book detail styles */
 .detail_book_display {
-    width:100%;
     text-align: center;
     margin-top: 20px;
 }
@@ -205,10 +204,9 @@ padding-right:10px;
     display: block;
 }
 .detail_book_description {
-    word-wrap:break-word;
     text-align: left;
     margin-top: 20px;
-    width:100%;
+    width:80%;
     margin-left: auto;
     margin-right: auto;
 }
