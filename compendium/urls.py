@@ -15,6 +15,7 @@ urlpatterns = [
 
     url(r'^hire_us/(\d+)', views.hire_us, name='hire_us'),
     url(r'^hire_us/reviews(\d+)', views.reviews, name='reviews'),
+    url(r'^hire_us/act(\d+)', views.act_details, name='act_details'),
 
     url(r'^add/(\d+)(\d+)', views.add_to_cart, name='add_to_cart'),
     url(r'^remove/(\d+)(\d+)', views.remove_from_cart, name='remove_from_cart'),

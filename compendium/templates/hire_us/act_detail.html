@@ -1,0 +1,23 @@
+{% extends 'hire_us/hire_us.html' %}
+
+{% load staticfiles %}
+
+{% block title %}
+    {{ act.name }} // Compendium Magic
+{% endblock %}
+
+{% block page_header %}
+    <h1>{{ act.name }}</h1>
+{% endblock %}
+
+{% block hire_us_content %}
+    <div class="detail_book_display">
+        <img class="detail_book_img" src="{{ MEDIA_URL }}{{ act.image }}">
+        <span class="detail_book_title">{{ act.name }}</span>
+        <span class="detail_book_author">{{ act.style }}</span>
+        <span>Will work: {% if restaurant == 1 %} Restaurant{% if stage == 1 or close_up == 1 %},{% endif %}{% endif %}{% if stage == 1 %} Stage{% if close_up == 1 %},{% endif %}{% endif %}{% if close_up == 1 %} Close-Up{% endif %}</span>
+        <div class="detail_book_description" style="text-align: center"><p>{{ act.bio }}</p></div>
+        <div hidden><p>Check out their <a href="{{act.website}}">website</a></p></div>
+    </div>
+
+{% endblock %}

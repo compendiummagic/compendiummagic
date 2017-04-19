@@ -196,6 +196,30 @@ def trick_details(request, trick_id):
 
     return render(request, 'store/trick_detail.html', context)
 
+def act_details(request, act_id):
+    act = get_object_or_404(Act, id=act_id)
+
+    restaurant = 0
+    stage = 0
+    close_up = 0
+
+    if act.restaurant:
+        restaurant = 1
+
+    if act.close_up:
+        close_up = 1
+
+    if  act.stage:
+        stage = 1
+
+    context = {
+        'restaurant': restaurant,
+        'close_up': close_up,
+        'stage': stage,
+        'act': act,
+    }
+
+    return render(request, 'hire_us/act_detail.html', context)
 
 
 def add_to_cart(request, item_id, item_classifier):
