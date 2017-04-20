@@ -378,13 +378,13 @@ def checkout(request, processor):
 
             token = request.POST['stripeToken']#str(all_requests.get('stripeToken', "0"))
 
-            f = open('store.txt', 'w')
-            f.write(str(token))
-            f.close()
+            #f = open('store.txt', 'w')
+            #f.write(str(token))
+            #f.close()
 
-            f = open('all_requests.txt', 'w')
-            f.write(str(all_requests))
-            f.close()
+            #f = open('all_requests.txt', 'w')
+            #f.write(str(all_requests))
+            #f.close()
 
             status = checkout_stripe(cart, book_orders, misc_orders, apparel_orders, trick_orders, token)
             if status:
@@ -621,7 +621,7 @@ def shipping_info(request):
         trick_orders = TrickOrder.objects.filter(cart=cart)
         total = 0
         count = 0
-        f = open('order.txt','w')
+        #f = open('order.txt','w')
         for order in book_orders:
             total += (order.item.price * order.quantity)
             count += order.quantity
@@ -634,8 +634,8 @@ def shipping_info(request):
         for order in trick_orders:
             total += (order.item.price * order.quantity)
             count += order.quantity
-            f.write(str(order.item.title))
-        f.close()
+            #f.write(str(order.item.title))
+        #f.close()
 
 
         shipping = ShippingInfo.objects.filter(user=request.user)
@@ -648,14 +648,14 @@ def shipping_info(request):
         }
 
         if request.method == "POST":
-            f = open('shipping.txt', 'w')
-            f.write(str(request.POST))
-            f.close()
+            #f = open('shipping.txt', 'w')
+            #f.write(str(request.POST))
+            #f.close()
 
-            f = open('item.txt', 'w')
+            #f = open('item.txt', 'w')
             for item in ShippingInfo.objects.filter(user=request.user):
 
-                f.write("Before: "+str(item.active)+"\n")
+                #f.write("Before: "+str(item.active)+"\n")
                 try:
                     if int(request.POST['active_address']) == item.id:
                         item.active = True
@@ -664,9 +664,9 @@ def shipping_info(request):
                 except:
                     item.active = False
 
-                f.write("After: " + str(item.active) + "\n")
+                #f.write("After: " + str(item.active) + "\n")
                 item.save()
-            f.close()
+            #f.close()
 
             form = ShippingForm(request.POST)
             if form.is_valid():
