@@ -53,7 +53,7 @@
                             <li><a href="{% url 'hire_us' 3 %}">Prices</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown hidden">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{% url 'shop' 0 %}">Merchandise</a></li>
@@ -66,7 +66,7 @@
                     <li><a href="#">Tricks</a></li>
                     {% endif %}
                     {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'cart' %}"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+                    <li class="hidden"><a href="{% url 'cart' %}"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
                     {% endif %}
                 </ul>
                 <div class="navbar-form pull-right">

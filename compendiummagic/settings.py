@@ -132,7 +132,7 @@ MEDIA_URL = "/media/"
 
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
-LOGIN_REDIRECT_URL = '/compendiummagic/'
+LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.mailgun.org"
@@ -154,21 +154,3 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 
 STRIPE_API_KEY = "sk_test_pqmmt7aWtfKqJOgIUjh0jaW3"
 STRIPE_DATA_KEY = "pk_test_jisarlTLQbriHQ4sLgusoZrX"
-
-#build paths inside the project like this: os.path.join(BASE_DIR, ...)
-#allow django from all hosts. This snippet is installed from
-# /var/lib/digitalocean/allow_hosts.py
-
-#import os
-#import netifaces
-
-# find out what the ip addresses are at runtime
-#this is neccesary because otherwise gunicorn will reject the connections
-#def ip_addresses():
-#    ip_list = []
-#    for interface in netifaces.interfaces():
-#        addrs = netifaces.ifaddresses(interface)
-#        for x in (netifaces.AF_INET, netifaces.AF_INET6):
-#            if x in addrs:
-#                ip_list.append(addrs[x][0]['addr'])
-#    return ip_list

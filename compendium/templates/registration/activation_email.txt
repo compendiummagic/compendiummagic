@@ -4,7 +4,7 @@ You signed up for an account at {{ site.name }}. Click the link below to activat
 
 http://{{ site.domain }}{% url 'registration_activate' activation_key %}
 
-This link is valid for {{ expiration_days }}. It is safe to ignore however.
+This link is valid for {{ expiration_days }} days. It is safe to ignore however.
 
 An activated account will allow you to hire entertainers, purchase items from the shop and leave us valuable reviews!
 
