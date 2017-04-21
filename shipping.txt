@@ -1,1 +1,0 @@
-<QueryDict: {u'active_address': [u'4'], u'csrfmiddlewaretoken': [u'4oFq6RXyJCYqNO7oLa7XPAMa4Ypyu2GB']}>
