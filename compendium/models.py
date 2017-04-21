@@ -105,7 +105,7 @@ class Act(models.Model):
     bio = models.TextField()
     speciality = models.CharField(max_length=200, default='All-Rounder')
     image = models.ImageField(upload_to=act_cover_upload_path, default='image_not_available.jpg')
-    website = models.CharField(max_length=200, default='http://localhost:8000/compendiummagic/')
+    website = models.CharField(max_length=200, default='http://www.compendiummagic.co.uk/hire_us/0/')
 
 class Review(models.Model):
     user = models.ForeignKey(User)

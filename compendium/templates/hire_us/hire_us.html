@@ -3,7 +3,7 @@
 
 {% block body %}
 <div class="container-fluid maincontent" style="padding-bottom:60px;">
-  <!----------------------carousel----------------------->
+  <!----------------------banner----------------------->
     <div class="col-md-10 col-md-offset-1 col-xs-12 shop_border" style="text-align:center; border-top:1px solid black;">
           <h1> {% block page_header %}
               {% if identifier == 0 %}
@@ -29,7 +29,8 @@
         {% endblock %}
     </div>
     {% endblock %}
-<!---------------- carousel end------------------->
+
+<!---------------- banner------------------->
 <div class="col-md-10 col-md-offset-1 col-xs-12 shop_border" style="padding-top:20px; text-align:center;">
 
     <!----------------------------sidebar--------------------------------->
@@ -89,6 +90,8 @@
                 </div>
         </div>
     <!----------------------------sidebarend--------------------------------->
+    {% block description %}
+    {% endblock %}
     <!--------------------------------hire_us content-------------------------------------->
     {% block hire_us_content %}
     <div class="col-sm-9 col-xs-12">
@@ -96,7 +99,7 @@
     {% for act in acts %}
     <div class="act_display">
         <a href="{% url 'act_details' act.id %}">
-            <img src="{{ MEDIA_URL }}{{ act.image }}">
+            <img src="{{ MEDIA_URL }}{{ act.image }}" class="act_image">
             <span class="act_name">{{ act.name }}</span>
             <span class="act_style">Style: {{ act.style }}</span>
             <span class="act_speciality">Speciality: {{ act.speciality }}</span>
