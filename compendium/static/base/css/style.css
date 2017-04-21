@@ -79,95 +79,62 @@ padding-right:10px;
   z-index: 1;
 }
 
-
-/* Makes images fully responsive */
-
-.img-responsive,
-.thumbnail > img,
-.thumbnail a > img,
-.carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
-  display: block;
-  width: 100%;
-  height: auto;
+.home_container {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px;
+}
+.home_page {
+    padding-left:0px;
+    padding-right:0px;
+}
+.home_title {
+    text-align: center;
 }
 
-/* ------------------- Carousel Styling ------------------- */
-
-.carousel-caption {
-  background-color: rgba(0,0,0,.5);
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  padding: 0 0 10px 25px;
-  color: #fff;
-  text-align: left;
+.home_jumbotron {
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    border-radius: 0;
 }
 
-.carousel-indicators {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  z-index: 15;
-  margin: 0;
-  padding: 0 25px 25px 0;
-  text-align: right;
+.home_banner {
+     width:100%;
+     padding-left:0px;
+     padding-right:0px;
+     border-radius: 0px !important;
+     border-top: 1px solid black;
+     border-bottom: 1px solid black;
+}
+.home_banner_title {
+    width:100%;
+    color: white;
+    text-align: center;
 }
 
-.carousel_home {
-    margin-left:-20px;
-    margin-right:-20px;
-    background-color: #fff;
-    padding-bottom: 30px;
-}
-
-.carousel-control.left,
-.carousel-control.right {
-  background-image: none;
-}
-
-@media screen and (max-width: 767px) {
-    .carousel_home{
-        padding-top: 40px;
-    }
-    .carousel-caption h3{
-        font-size: 20px;
-    }
-}
-
-
-/*
-.carousel_home {
-    padding: 20px;
-    min-height:80vh;
-    min-width:100%;
-    max-height:80vh;
-    margin-left:-20px;
-    margin-right:-20px;
-    background-color: #fff;
-}
-.carousel-inner img{
-    height:100%;
-    margin-top:-20px;
-    overflow:auto;
-}
-.carousel-content {
+.home_half_image{
     text-align:center;
 }
-@media (max-width: 767px){
 
-    .carousel-caption h3{
-        font-size: 20px;
-    }
-    /*.carousel-inner img{
-        max-height:40vh;
-    }*/
+.home_half_image img{
+    width:75%;
+}
 
-
+.home_content {
+    text-align: center;
+    padding-left:10px;
+    padding-right:10px;
+}
+.home_content h2{
+    font-weight: bold;
+    padding: 10px;
+}
+.home_content p{
+    font-size: 16px;
+    padding: 10px;
+}
 
 /* shop styles */
 .shop_border{
