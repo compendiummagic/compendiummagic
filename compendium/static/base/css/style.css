@@ -2,9 +2,9 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0px;
     padding:0px;
-    font-color: #fff;
+    /*font-color: #fff;*/
     min-height:100%;
-    background-image: url('bg_texture.png');
+    background-image: url('background_texture_black.png');
 }
 
 .wrapper {
@@ -110,8 +110,9 @@ padding-right:10px;
 }
 .home_banner_title {
     width:100%;
-    color: white;
+    /*color: white;*/
     text-align: center;
+    font-size:30px;
 }
 
 .home_half_image{
@@ -128,17 +129,21 @@ padding-right:10px;
     padding-right:10px;
 }
 .home_content h2{
-    font-weight: bold;
     padding: 10px;
+    font-size: 30px;
 }
 .home_content p{
     font-size: 16px;
     padding: 10px;
 }
 
+.background_white {
+    /*background-color:#fff;*/
+}
+
 /* shop styles */
 .shop_border{
-    background-color: #fff;
+    background-color: #151515;
     border-left: 1px solid grey;
     border-right: 1px solid grey;
 }
@@ -309,12 +314,12 @@ padding-right:10px;
 }
 
 .act_display a {
-    color: black;
+    /*color: #686868;*/
 }
 
 .act_display a:hover {
     text-decoration:none;
-    color: grey;
+    color: #990000;
 }
 
 .act_display a:active {
@@ -344,8 +349,8 @@ padding-right:10px;
 }
 
 .act_image {
-    width: 150px;
-    height: 192px;
+    width: 192px;
+    height: 150px;
     border-radius: 10px;
 }
 
@@ -356,11 +361,7 @@ padding-right:10px;
 
 .review_display{
     min-height:100%;
-    background-color: #fff;
-}
-.reviews_title{
-    text-align: center;
-    font-weight:bold;
+    /*background-color: #fff;*/
 }
 
 .reviews {
@@ -387,7 +388,7 @@ padding-right:10px;
     min-height: 100%;
     position: absolute;
     top:0;
-    background-color: #fff;
+    /*background-color: #fff;*/
 
 }
 
@@ -418,6 +419,7 @@ padding-right:10px;
     border: 1px solid grey;
     padding-left: 5px;
     padding-right: 5px;
+    background-color: #212121;
 }
 
 
@@ -462,13 +464,17 @@ padding-right:10px;
 
 .prices_container{
     border: 1px solid black;
-    background-color: #fff;
+    /*background-color: #fff;*/
     padding-top: 100px;
     min-height:100%;
     opacity: 0.9;
     filter: alpha(opacity=90);
     position:fixed;
     margin-top:20vm
+}
+
+.prices_table{
+    /*background:#fff;*/
 }
 
 .hireus_sidenav {

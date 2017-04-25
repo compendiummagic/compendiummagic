@@ -1,4 +1,4 @@
-Hi there {{ name }}
+Hi there  {{ firstname }} {{ lastname }}
 
 We're just going to have a look at your requirements and we'll be in touch as soon as possible.
 

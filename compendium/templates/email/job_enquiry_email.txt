@@ -1,6 +1,6 @@
 You have a job request
 
-Name: {{ name }}
+Name:  {{ firstname }} {{ lastname }}
 Email: {{ email }}
 Phone: {{ phone }}
 Date: {{ date }}

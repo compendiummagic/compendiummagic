@@ -109,6 +109,8 @@ class Act(models.Model):
 
 class Review(models.Model):
     user = models.ForeignKey(User)
+    firstname = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
     item = models.ForeignKey(Item)
     publish_date = models.DateField(default=timezone.now)
     text = models.TextField()

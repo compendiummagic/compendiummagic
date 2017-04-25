@@ -16,9 +16,13 @@ CHOICES = [
 
 class ReviewForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea, label='')
+    first_name = forms.CharField(max_length=50, label='First Name')
+    last_name = forms.CharField(max_length=50, label='Last Name')
 
 class ContactForm(forms.Form):
-
+    first_name = forms.CharField(max_length=50, label='First Name')
+    last_name = forms.CharField(max_length=50, label='Last Name')
+    email = forms.EmailField()
     phone = forms.CharField(max_length=50, label='Mobile Number')
     date = forms.DateField(label='Event Date', input_formats=DATE_INPUT_FORMATS)
     time = forms.TimeField(label='Event Time')

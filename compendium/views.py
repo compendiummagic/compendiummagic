@@ -47,6 +47,8 @@ def reviews(request, item_id):
             if form.is_valid():
                 new_review = Review.objects.create(
                     user=request.user,
+                    firstname=form.cleaned_data.get('first_name'),
+                    lastname=form.cleaned_data.get('last_name'),
                     item=context['item'],
                     text=form.cleaned_data.get('text'),
                 )
@@ -319,13 +321,14 @@ def contact_us(request):
             if form.is_valid():
                 subject = 'Compendium Magic Enquiry'
                 from_email = settings.BOOKING_FROM_EMAIL
-                to_email_customer = [request.user.email]
+                to_email_customer = [form.cleaned_data.get('email')]
                 to_email_compendium = [settings.BOOKING_FROM_EMAIL]
 
                 email_context = Context ({
-                    'name': request.user.username,
+                    'firstname': form.cleaned_data.get('first_name'),
+                    'lastname': form.cleaned_data.get('last_name'),
                     'phone':form.cleaned_data.get('phone'),
-                    'email': request.user.email,
+                    'email': form.cleaned_data.get('email'),
                     'date':form.cleaned_data.get('date'),
                     'time':form.cleaned_data.get('time'),
                     'venue':form.cleaned_data.get('venue'),
