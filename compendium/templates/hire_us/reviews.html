@@ -28,8 +28,22 @@
             <h4> Review us!</h4>
             <form class="form-inline" action="{% url 'reviews' item.pk %}" method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Submit">
+                {% for field in form %}
+                    <div class="contact_us_label">
+                    {{ field.label_tag }}
+                    </div>
+                    <div class="contact_us_input">
+                    {{ field }}
+                    </div>
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger contact_us_error">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                <div class="contact_us_button">
+                    <input type="submit" value="Submit" class="btn btn-success">
+                </div>
             </form>
             <br>
             {% endif %}
