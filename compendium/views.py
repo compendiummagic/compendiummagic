@@ -346,7 +346,7 @@ def contact_us(request):
                 msg.content_subtype = 'html'
                 msg.send()
 
-                subject = 'Job Request: '+str(request.user.username)
+                subject = 'Job Request: '+str(form.cleaned_data.get('first_name'))+" "+str(form.cleaned_data.get('last_name')) +" "+ str(form.cleaned_data.get('date'))
 
                 text_email = render_to_string('email/job_enquiry_email.txt', email_context)
                 html_email = render_to_string('email/job_enquiry_email.html', email_context)
