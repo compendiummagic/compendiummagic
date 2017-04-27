@@ -344,7 +344,7 @@ def contact_us(request):
                 msg = EmailMultiAlternatives(subject, text_email, from_email, to_email_customer)
                 msg.attach_alternative(html_email, 'text/html')
                 msg.content_subtype = 'html'
-                msg.send()
+                #msg.send()
 
                 subject = 'Job Request: '+str(form.cleaned_data.get('first_name'))+" "+str(form.cleaned_data.get('last_name')) +" "+ str(form.cleaned_data.get('date'))
 
