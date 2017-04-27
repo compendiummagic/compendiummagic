@@ -319,9 +319,9 @@ def contact_us(request):
             form = ContactForm(request.POST)
 
             if form.is_valid():
-                subject = 'Compendium Magic Enquiry'
+                #subject = 'Compendium Magic Enquiry'
                 from_email = settings.BOOKING_FROM_EMAIL
-                to_email_customer = [form.cleaned_data.get('email')]
+                #to_email_customer = [form.cleaned_data.get('email')]
                 to_email_compendium = [settings.BOOKING_FROM_EMAIL]
 
                 email_context = Context ({
@@ -338,12 +338,12 @@ def contact_us(request):
                 })
 
 
-                text_email = render_to_string('email/contact_request_email.txt', email_context)
-                html_email = render_to_string('email/contact_request_email.html', email_context)
+                #text_email = render_to_string('email/contact_request_email.txt', email_context)
+                #html_email = render_to_string('email/contact_request_email.html', email_context)
 
-                msg = EmailMultiAlternatives(subject, text_email, from_email, to_email_customer)
-                msg.attach_alternative(html_email, 'text/html')
-                msg.content_subtype = 'html'
+                #msg = EmailMultiAlternatives(subject, text_email, from_email, to_email_customer)
+                #msg.attach_alternative(html_email, 'text/html')
+                #msg.content_subtype = 'html'
                 #msg.send()
 
                 subject = 'Job Request: '+str(form.cleaned_data.get('first_name'))+" "+str(form.cleaned_data.get('last_name')) +" "+ str(form.cleaned_data.get('date'))
