@@ -135,9 +135,17 @@ REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/contact_us/'
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+#EMAIL_HOST = "smtp.mailgun.org"
+#EMAIL_HOST_USER = "postmaster@compendiummagic.co.uk"
+#EMAIL_HOST_PASSWORD = "6503dc3a191dee3f65e7679553dd30f0"
+
 EMAIL_HOST = "smtp.mailgun.org"
-EMAIL_HOST_USER = "postmaster@compendiummagic.co.uk"
-EMAIL_HOST_PASSWORD = "6503dc3a191dee3f65e7679553dd30f0"
+EMAIL_HOST_USER = "postmaster@sandbox717182cbda8f4a4885eca2799c73cda5.mailgun.org"
+EMAIL_HOST_PASSWORD = "cd534cba607361c4bd6a3feeb11f5528"
+
+#EMAIL_HOST = "smtp.zoho.com"
+#EMAIL_HOST_USER = "booking@compendiummagic.co.uk"
+#EMAIL_HOST_PASSWORD = "6503dc3a191dee3f65e7679553dd30f0"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'magic@compendiummagic.co.uk'
