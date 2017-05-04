@@ -144,6 +144,7 @@ fabric.properties
 
 #media
 media/act
+media/act/*
 media/apparel
 media/books
 media/misc
