@@ -141,3 +141,6 @@ crashlytics-build.properties
 fabric.properties
 
 *.postgresql_psycopg2
+
+#media
+media/*
